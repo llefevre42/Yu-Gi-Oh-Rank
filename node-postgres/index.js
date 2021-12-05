@@ -12,8 +12,28 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/getoneevent', (req, res) => {
-  getData.getOneEvent(req.body)
+app.get('/getoneevent/:id', (req, res) => {
+  getData.getOneEvent(req.params.id)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
+app.get('/getonejoueur/:id', (req, res) => {
+  getData.getOneJoueur(req.params.id)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
+app.get('/getjoueurresultat/:id', (req, res) => {
+  getData.getJoueurResultat(req.params.id)
   .then(response => {
     res.status(200).send(response);
   })

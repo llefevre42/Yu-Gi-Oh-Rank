@@ -1,32 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
-import { Title } from '../Styles'
 import { useRouter } from 'next/router'
 import Arbo from './../../components/Arbo'
 import Header from './../../components/Header'
 
-
-
 export default function RankPlayer() {
     const router = useRouter()
-
-    const [events, getOneEvents] = useState([]);
-    useEffect(() => {
-        getOneEvent(router.query.event_id);
-    }, []);
-    function getOneEvent(id) {
-        fetch('http://localhost:3001/getoneevent', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ id }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                getOneEvents(data);
-            });
-    }
 
     const results =
     {
@@ -41,7 +20,7 @@ export default function RankPlayer() {
             { place: '8', nom: 'florian fagardo', team: 'goat', point: '27' },
         ]
     };
-    console.log(events)
+
     return (
         <div style={{
             minHeight: "100vh", overflowX: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
@@ -100,7 +79,7 @@ export default function RankPlayer() {
                         overflow: 'hidden',
                     }}>
                         {results.resu.map((result, index) => (
-                            <Link href="/Event/EventPlayer">
+                            <Link key={index} href="/Event/EventPlayer">
                                 <div style={{
                                     display: "flex", flexDirection: "row",
                                     justifyContent: "space-around",

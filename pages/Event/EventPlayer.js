@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link'
-import { Title } from '../Styles'
 import Arbo from './../../components/Arbo'
 import Header from './../../components/Header'
 
@@ -8,7 +7,7 @@ import Header from './../../components/Header'
 export default function EventPlayer() {
     const results =
     {
-        name: "Ludovic Lefevre", cossy: "0303645252", rank: "1", deck: 'Data', tournoi_lieu: "montpelier", tournoi_date: "20/23", youtube: "https://www.youtube.com/embed/QFEWM4v6VcU", imgDeck: 'https://yugioh-france.fr/wp-content/uploads/2021/06/Tribri.jpg', tournoi: "GCG cup"
+        name: "Ludovic Lefevre", id_cossy: "0303645252", rank: "1", deck: 'Data',id_event: 2, tournoi_lieu: "montpelier", tournoi_date: "20/23", youtube: "https://www.youtube.com/embed/QFEWM4v6VcU", imgDeck: 'https://yugioh-france.fr/wp-content/uploads/2021/06/Tribri.jpg', tournoi: "GCG cup"
     };
     return (
         <div style={{
@@ -46,7 +45,10 @@ export default function EventPlayer() {
                                     <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around", marginTop: 10, marginLeft: 15 }}>
                                         <div>
                                             <div style={{ fontSize: 23, textAlign: "left", color: "#efefef" }}>
-                                                <Link href="/Player/Player">
+                                                <Link href={{
+                                                    pathname: "/Player/Player",
+                                                    query: { id_cossy: results.id_cossy },
+                                                }}>
                                                     <a>{results.name}</a>
                                                 </Link>
                                             </div>
@@ -63,8 +65,11 @@ export default function EventPlayer() {
                                     </div>
                                     <div style={{ display: "flex", flexDirection: "column", }}>
                                         <div style={{ border: "3px solid", borderColor: '#0d8d40', borderRadius: "30px", marginTop: "auto", marginBottom: "auto", padding: 20 }}>
-                                            <Link href="/Event/Events">
-                                            <a style={{ color: "inherit", textDecoration: "inherit" }}>
+                                            <Link href={{
+                                                pathname: "/Event/Events",
+                                                query: { event_id: results.id_event },
+                                            }}>
+                                                <a style={{ color: "inherit", textDecoration: "inherit" }}>
                                                     <div style={{ fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
                                                         <div>
                                                             {results.tournoi}

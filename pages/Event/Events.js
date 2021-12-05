@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
-import { Title } from '../Styles'
 import { useRouter } from 'next/router'
 import Arbo from './../../components/Arbo'
 import Header from './../../components/Header'
@@ -9,24 +8,26 @@ import Header from './../../components/Header'
 
 export default function Events() {
     const router = useRouter()
-
+    console.log(router.query.event_id)
     const [events, getOneEvents] = useState([]);
+
     useEffect(() => {
+        if (!router.isReady) return;
+        console.log('DATA')
         getOneEvent(router.query.event_id);
-    }, []);
+    }, [router.isReady])
+
     function getOneEvent(id) {
-        fetch('http://localhost:3001/getoneevent', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ id }),
+        console.log("id : ", id)
+        fetch('http://localhost:3001/getoneevent/' + id, {
         })
             .then(response => response.json())
             .then(data => {
+                console.log("data1 : ", data)
                 getOneEvents(data);
             });
     }
+
 
     const results =
     {
@@ -41,7 +42,10 @@ export default function Events() {
             { place: '5-8', nom: 'florian fagardo', deck: 'zoodiac' },
         ]
     };
-    console.log(events)
+
+
+    const date = new Date(events.date_event)
+    events.date_event = (date.getDate() + ' / ' + (date.getMonth() + 1))
     return (
         <div style={{
             minHeight: "100vh", overflowX: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
@@ -60,18 +64,39 @@ export default function Events() {
                 display: "flex",
                 flexDirection: "row",
             }}>
-             <Arbo/>
+                <Arbo />
                 <div style={{ width: "100%", marginLeft: 30 }}>
-                <Header/>
+                    <Header />
 
                     <div style={{ fontSize: 40, textAlign: "center", color: "#efefef" }}>
-                        {router.query.nom_event} -  {router.query.rank_event}
+                        {events.nom_event} -  {events.rating_event}
                     </div>
                     <div style={{ fontSize: 25, textAlign: "center", color: "#efefef" }}>
-                        {router.query.date_event} - {router.query.nbr_player_event} Joueur
+                        {events.date_event} - {events.nbr_player_event} Joueur
                     </div>
                     <div style={{ fontSize: 25, textAlign: "center", color: "#efefef" }}>
                         Top Cut :
+                    </div>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        marginTop: 10,
+                        marginLeft: 10,
+                        marginRight: 20,
+                        justifyContent: "space-around",
+                        alignItems: "center",
+                    }}>
+                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10 }}>
+                            Place :
+                        </div>
+
+                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
+                            Joueur :
+                        </div>
+                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
+                            Deck :
+                        </div>
+
                     </div>
                     <div style={{
                         border: "3px solid",
@@ -85,29 +110,29 @@ export default function Events() {
                         overflow: 'hidden',
                     }}>
                         {results.resu.map((result, index) => (
-                            <Link href="/Event/EventPlayer">
+                            <Link key={index} href="/Event/EventPlayer">
                                 <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                                <div style={{
-                                    display: "flex", flexDirection: "row",
-                                    justifyContent: "space-around",
-                                    backgroundColor: (index % 2 ? "black" : null),
-                                    alignItems: "center",
-                                }}>
+                                    <div style={{
+                                        display: "flex", flexDirection: "row",
+                                        justifyContent: "space-around",
+                                        backgroundColor: (index % 2 ? "black" : null),
+                                        alignItems: "center",
+                                    }}>
 
-                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10 }}>
-                                        {result.place}
+                                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10 }}>
+                                            {result.place}
+                                        </div>
+
+                                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
+                                            {result.nom}
+                                        </div>
+
+
+                                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
+                                            {result.deck}
+
+                                        </div>
                                     </div>
-
-                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
-                                        {result.nom}
-                                    </div>
-
-
-                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10 }}>
-                                        {result.deck}
-
-                                    </div>
-                                </div>
                                 </a>
                             </Link>
                         ))}

@@ -6,14 +6,38 @@ const pool = new Pool({
   password: 'adn59bis',
   port: 5432,
 });
-const getOneEvent = (body) => {
+const getOneEvent = (id) => {
   return new Promise(function(resolve, reject) {
-    const { name } = body
-    pool.query('SELECT * FROM public."Evenement" WHERE id_event = name ', [name], (error, results) => {
+    console.log('ids : ',id)
+    pool.query('SELECT * FROM public."Evenement" WHERE id_event = $1 ', [id], (error, results) => {
       if (error) {
         reject(error)
       }
-      resolve(results);
+      resolve(results.rows[0]);
+    })
+  }) 
+}
+
+const getOneJoueur = (id) => {
+  return new Promise(function(resolve, reject) {
+    console.log('ids : ',id)
+    pool.query('SELECT * FROM public."Joueur" WHERE id_cossy = $1 ', [id], (error, results) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(results.rows[0]);
+    })
+  }) 
+}
+
+const getJoueurResultat = (id) => {
+  return new Promise(function(resolve, reject) {
+    console.log('ids : ',id)
+    pool.query('SELECT * FROM public."Resultat" where id_cossy = $1 ', [id], (error, results) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(results.rows);
     })
   }) 
 }
@@ -72,5 +96,5 @@ const getAllEvent = () => {
   }
   
   module.exports = {
-    getOneEvent,getAllEvent, getEventResultat , getLastEvent,getNextEvent,getAllTeam
+    getOneEvent,getAllEvent, getEventResultat , getLastEvent,getNextEvent,getAllTeam, getOneJoueur,getJoueurResultat
   }

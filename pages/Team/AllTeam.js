@@ -63,14 +63,14 @@ export default function AllTeam() {
                         <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10 }}>
                             Point :
                         </div>
-                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10 }}>
+                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "8%", marginTop: 10, marginBottom: 10 }}>
                             Logo :
                         </div>
                     </div>
                     <div style={{ border: "3px solid", borderColor: '#0d8d40', borderRadius: "30px", marginRight: 20, overflow: "hidden" }}>
                         {teams.map((team, index) => (
-                            <Link href={{
-                                pathname: "/Event/Events",
+                            <Link key={index} href={{
+                                pathname: "/Team/Team",
                                 query: { id_team: team.id_team }
                             }} >
                                 <a style={{ color: "inherit", textDecoration: "inherit" }}>
