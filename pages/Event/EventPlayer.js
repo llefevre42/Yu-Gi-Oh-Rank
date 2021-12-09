@@ -1,14 +1,41 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Arbo from './../../components/Arbo'
 import Header from './../../components/Header'
+import styles from '../../Styles/globalStyle'
 
 
 export default function EventPlayer() {
-    const results =
-    {
-        name: "Ludovic Lefevre", id_cossy: "0303645252", rank: "1", deck: 'Data',id_event: 2, tournoi_lieu: "montpelier", tournoi_date: "20/23", youtube: "https://www.youtube.com/embed/QFEWM4v6VcU", imgDeck: 'https://yugioh-france.fr/wp-content/uploads/2021/06/Tribri.jpg', tournoi: "GCG cup"
-    };
+    const router = useRouter()
+    const [results, getOneJoueurResultats] = useState([]);
+    const [events, getOneEvents] = useState([]);
+
+    useEffect(() => {
+        if (!router.isReady) return;
+        getOneEvent(router.query.event_id);
+        getOneJoueurResultat(router.query.event_id, router.query.cossy_id);
+    }, [router.isReady])
+
+
+    function getOneEvent(id) {
+        fetch('http://localhost:3001/getoneevent/' + id, {
+        })
+            .then(response => response.json())
+            .then(data => {
+                getOneEvents(data);
+            });
+    }
+
+    function getOneJoueurResultat(event, cossy) {
+        fetch('http://localhost:3001/getonejoueurresultat/' + event + '/' + cossy, {
+        })
+            .then(response => response.json())
+            .then(data => {
+                getOneJoueurResultats(data);
+            });
+    }
     return (
         <div style={{
             minHeight: "100vh", overflowX: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
@@ -17,12 +44,7 @@ export default function EventPlayer() {
             backgroundSize: "30%",
             backgroundPosition: "right top",
         }}>
-            <style jsx global>{`
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    `}</style>
+
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -30,7 +52,7 @@ export default function EventPlayer() {
                 <Arbo />
                 <div style={{ width: "100%", marginLeft: 30 }}>
                     <Header />
-                    <div style={{ border: "3px solid", borderColor: '#0d8d40', borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30 }}>
+                    <div style={{ ...styles.bordure_g, borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30 }}>
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -39,8 +61,10 @@ export default function EventPlayer() {
                             <div>
                                 <div style={{ display: "flex", flexDirection: "row" }}>
 
-                                    <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDCXkzWUlkGNPg3kHNl1hIeihamQQLMQfcegMprnpstdjN59n3bg3S5TZ2r1gcpdMhGJc&usqp=CAU"}
-                                        style={{ width: 150, height: 200, marginTop: 10, border: "3px solid", borderColor: '#0d8d40' }} />
+                                    {results.photo_joueur != null ? <img src={results.photo_joueur}
+                                        style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />
+                                        : <img src={"./../Vagabond.jpeg"}
+                                            style={{ width: 150, height: 200, marginTop: 10,...styles.bordure_g }} />}
 
                                     <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around", marginTop: 10, marginLeft: 15 }}>
                                         <div>
@@ -49,22 +73,39 @@ export default function EventPlayer() {
                                                     pathname: "/Player/Player",
                                                     query: { id_cossy: results.id_cossy },
                                                 }}>
-                                                    <a>{results.name}</a>
+                                                    <a>{results.prenom_joueur} {results.nom_joueur}</a>
                                                 </Link>
                                             </div>
                                             <div style={{ fontSize: 20, textAlign: "left", color: "#efefef" }}>
-                                                {results.cossy}
+                                                {results.id_cossy}
                                             </div>
                                             <div style={{ fontSize: 20, textAlign: "left", color: "#efefef" }}>
-                                                Deck : {results.deck}
+                                                Deck : {results.deck_joueur}
                                             </div>
                                         </div>
-                                        <div style={{ fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
-                                            {results.rank}er
-                                        </div>
+                                        {results.toped > 0 ? 
+                                            (results.toped == 1 ?
+                                                <div style={{ fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                    {results.toped}er
+                                                </div> :
+                                                <div style={{ fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                    {results.toped}eme
+                                                </div>
+                                                )
+                                        :
+                                            (results.place == 1 ?
+                                                    <div style={{ fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                        {results.place}er
+                                                    </div> :
+                                                    <div style={{ fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                        {results.place}eme
+                                                    </div>
+                                            )
+                                        }
+
                                     </div>
                                     <div style={{ display: "flex", flexDirection: "column", }}>
-                                        <div style={{ border: "3px solid", borderColor: '#0d8d40', borderRadius: "30px", marginTop: "auto", marginBottom: "auto", padding: 20 }}>
+                                        <div style={{ ...styles.bordure_g, borderRadius: "30px", marginTop: "auto", marginBottom: "auto", padding: 20 }}>
                                             <Link href={{
                                                 pathname: "/Event/Events",
                                                 query: { event_id: results.id_event },
@@ -72,14 +113,14 @@ export default function EventPlayer() {
                                                 <a style={{ color: "inherit", textDecoration: "inherit" }}>
                                                     <div style={{ fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
                                                         <div>
-                                                            {results.tournoi}
+                                                            {events.nom_event}
                                                         </div>
                                                     </div>
                                                     <div style={{ fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
-                                                        {results.tournoi_date}
+                                                        {(new Date(events.date_event)).getDate()} /  {(new Date(events.date_event)).getMonth() + 1}
                                                     </div>
                                                     <div style={{ fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
-                                                        {results.tournoi_lieu}
+                                                        {events.lieu_event}
                                                     </div>
                                                 </a>
                                             </Link>
@@ -87,7 +128,7 @@ export default function EventPlayer() {
                                     </div>
                                 </div>
                                 <iframe style={{ width: "100%", height: "60%", border: "2px solid", borderColor: '#0d8d40', marginTop: 10 }}
-                                    src={results.youtube}
+                                    src={results.youtube_link}
                                     frameborder='0'
                                     allow='autoplay; encrypted-media'
                                     allowfullscreen
@@ -95,7 +136,7 @@ export default function EventPlayer() {
                                 />
                             </div>
                             <img style={{ width: "50%", height: "60vh", border: "2px solid", borderColor: '#0d8d40', marginTop: 10, marginBottom: 10 }}
-                                src={results.imgDeck}
+                                src={results.img_decklist}
                                 alt="new"
                             />
                         </div>

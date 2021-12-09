@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Image from "next/image"
 import React, { useState, useEffect } from 'react';
 import Arbo from './../../components/Arbo'
 import Header from './../../components/Header'
+import styles from '../../Styles/globalStyle'
 
 export default function AllEvent() {
     const [lastEvent, getLastEvents] = useState([]);
@@ -44,7 +44,7 @@ export default function AllEvent() {
                     <div style={{ fontSize: 30, textAlign: "center", fontFamily: "Ariq", color: "#0d8d40", marginTop: 30, marginBottom: 30 }}>
                         Liste des Evenement en France :
                 </div>
-                    <div style={{ border: "3px solid", borderColor: '#0d8d40', borderRadius: "30px", marginRight: 20 }}>
+                    <div style={{...styles.bordure_g, borderRadius: "30px", marginRight: 20 }}>
                         {lastEvent.map((Event, index) => (
                             <Link href={{
                                 pathname: "/Event/Events",

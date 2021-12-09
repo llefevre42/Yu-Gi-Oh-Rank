@@ -10,4 +10,6 @@ const Title = styled.h1`
     color: white;
 `;
 
+const Cadre = styled.div
+
 export default { Title };

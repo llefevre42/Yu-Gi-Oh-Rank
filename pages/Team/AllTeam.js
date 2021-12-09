@@ -3,6 +3,7 @@ import Image from "next/image"
 import React, { useState, useEffect } from 'react';
 import Arbo from './../../components/Arbo'
 import Header from './../../components/Header'
+import styles from '../../Styles/globalStyle'
 
 export default function AllTeam() {
     const [teams, getAllTeams] = useState([]);
@@ -67,7 +68,7 @@ export default function AllTeam() {
                             Logo :
                         </div>
                     </div>
-                    <div style={{ border: "3px solid", borderColor: '#0d8d40', borderRadius: "30px", marginRight: 20, overflow: "hidden" }}>
+                    <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20, overflow: "hidden" }}>
                         {teams.map((team, index) => (
                             <Link key={index} href={{
                                 pathname: "/Team/Team",

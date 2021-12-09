@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Arbo from './../../components/Arbo'
 import Header from './../../components/Header'
+import styles from '../../Styles/globalStyle'
 
 export default function RankPlayer() {
     const router = useRouter()
@@ -68,8 +69,7 @@ export default function RankPlayer() {
                         </div>
                     </div>
                     <div style={{
-                        border: "3px solid",
-                        borderColor: '#0d8d40',
+                      ...styles.bordure_g,
                         borderRadius: "30px",
                         display: "flex",
                         flexDirection: "column",

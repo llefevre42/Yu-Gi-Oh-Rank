@@ -42,6 +42,26 @@ app.get('/getjoueurresultat/:id', (req, res) => {
   })
 })
 
+app.get('/getonejoueurresultat/:event/:cossy', (req, res) => {
+  getData.getOneJoueurResultat(req.params.event, req.params.cossy)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
+app.get('/geteventresultat/:id', (req, res) => {
+  getData.getEventResultat(req.params.id)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
 app.get('/getallteam', (req, res) => {
   getData.getAllTeam()
   .then(response => {

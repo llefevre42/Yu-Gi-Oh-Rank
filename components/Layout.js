@@ -1,4 +1,4 @@
-import globalStyles from '../styles/global.js'
+import globalStyles from '../Styles/globalcss.js'
 
 function Layout(props) {
   return (

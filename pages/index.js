@@ -1,12 +1,11 @@
 
 import Link from 'next/link'
-import Image from "next/image"
 import React, { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
 import Arbo from './../components/Arbo'
 import Header from './../components/Header'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
+import styles from '../Styles/globalStyle'
 
 export default function Home() {
   const [events, getAllEvents] = useState([]);
@@ -39,15 +38,6 @@ export default function Home() {
       });
   }
 
-  lastEvent.map((Events, index) => {
-    const date = new Date(Events.date_event)
-    lastEvent[index].date_event = (date.getDate() + ' / ' + (date.getMonth() + 1))
-  })
-
-  nextEvent.map((Events, index) => {
-    const date = new Date(Events.date_event)
-    nextEvent[index].date_event = (date.getDate() + ' / ' + (date.getMonth() + 1))
-  })
   const options = { delay: 4000 }
   const autoplay = Autoplay(options)
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [autoplay])
@@ -86,7 +76,7 @@ export default function Home() {
         <div style={{ width: "100%", marginLeft: 30, marginRight: 30 }}>
           <Header />
 
-          <div style={{ border: "3px solid", borderColor: '#0d8d40', borderRadius: "30px", overflow: 'hidden', marginTop: 10, marginLeft: 10 }}>
+          <div style={{ ...styles.bordure_g, borderRadius: "30px", overflow: 'hidden', marginTop: 10, marginLeft: 10 }}>
             <div style={{ overflow: "hidden", width: "100%", }} ref={emblaRef}>
               <div style={{ display: "flex" }}>
                 <img style={{
@@ -123,7 +113,7 @@ export default function Home() {
                 Dernier Evenement en France :
                  </div>
 
-              <div style={{ border: "3px solid", borderColor: '#0d8d40', width: "100%", borderRadius: "30px" }}>
+              <div style={{ ...styles.bordure_g, width: "100%", borderRadius: "30px" }}>
                 {lastEvent.slice(0, 5).map((Event, index) => (
                   <Link key={index} href={{
                     pathname: "/Event/Events",
@@ -138,7 +128,7 @@ export default function Home() {
                       }}>
 
                         <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10, fontFamily: "Metropolis" }}>
-                          {Event.date_event}
+                        {(new Date(Event.date_event)).getDate()} /  {(new Date(Event.date_event)).getMonth() + 1} 
                         </div>
                         <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "25%", marginTop: 10, marginBottom: 10, fontFamily: "Metropolis" }}>
                           {Event.lieu_event.substr(0, 15)}
@@ -161,7 +151,7 @@ export default function Home() {
               <div style={{ fontSize: 30, textAlign: "center", fontFamily: "Phosphate", color: "#27f32c", marginTop : 20 }}>
                 Prochain Evenement en France :
                 </div>
-              <div style={{ border: "3px solid", borderColor: '#0d8d40', width: "100%", borderRadius: "30px" }}>
+              <div style={{ ...styles.bordure_g, width: "100%", borderRadius: "30px" }}>
                 {nextEvent.slice(0, 5).map((Event, index) => (
                   <Link key={index} href={{
                     pathname: "/Event/Events",
@@ -177,7 +167,7 @@ export default function Home() {
                       }}>
 
                         <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "15%", fontFamily: "Metropolis" }}>
-                          {Event.date_event}
+                        {(new Date(Event.date_event)).getDate()} /  {(new Date(Event.date_event)).getMonth() + 1}
                         </div>
                         <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "25%", fontFamily: "Metropolis" }}>
                           {Event.lieu_event}
@@ -197,5 +187,4 @@ export default function Home() {
     </div>
   );
 }
-//<div style={{display: "flex", flexDirection: "row",  border: "1px solid black", borderColor: 'black' }}>
-//{Event.date_event}
+
