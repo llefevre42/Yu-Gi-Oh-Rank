@@ -29,18 +29,12 @@ export default function Team() {
 
     return (
         <div style={{
-            minHeight: "100vh", overflowX: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
+            minHeight: "100vh", overflow: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
             height: "100%",
             backgroundRepeat: "no-repeat",
             backgroundSize: "30%",
             backgroundPosition: "right top",
         }}>
-            <style jsx global>{`
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    `}</style>
             <div style={{
                 display: "flex",
                 flexDirection: "row",

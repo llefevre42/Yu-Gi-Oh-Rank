@@ -23,18 +23,12 @@ export default function AllTeam() {
      })*/
     return (
         <div style={{
-            minHeight: "100vh", overflowX: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
+            minHeight: "100vh", overflow: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
             height: "100%",
             backgroundRepeat: "no-repeat",
             backgroundSize: "30%",
             backgroundPosition: "right top",
         }}>
-            <style jsx global>{`
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    `}</style>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -83,7 +77,7 @@ export default function AllTeam() {
                                         backgroundColor: team.couleur_team//(index % 2 ? "black" : null)
                                     }}>
                                         <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "10%" }}>
-                                            {1}
+                                            {index + 1}
                                         </div>
 
                                         <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "30%" }}>
@@ -91,7 +85,7 @@ export default function AllTeam() {
                                         </div>
 
                                         <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "15%" }}>
-                                            {36}
+                                            {team.total_point_team}
                                         </div>
                                         <img src={team.logo_team} style={{ width: 100, height: 100 }}></img>
                                     </div>

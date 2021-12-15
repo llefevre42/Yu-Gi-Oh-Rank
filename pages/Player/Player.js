@@ -42,18 +42,12 @@ export default function Player() {
 
     return (
         <div style={{
-            minHeight: "100vh", overflowX: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
+            minHeight: "100vh", overflow: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
             height: "100%",
             backgroundRepeat: "no-repeat",
             backgroundSize: "30%",
             backgroundPosition: "right top",
         }}>
-            <style jsx global>{`
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    `}</style>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -69,28 +63,28 @@ export default function Player() {
                                     style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />}
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: 'space-around' }}>
                                 <div>
-                                    <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, marginBottom: 0, color: "#efefef" }}>
+                                    <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, marginBottom: 0, color: "#efefef" }}>
                                         {joueur.prenom_joueur + " " + joueur.nom_joueur}
                                     </div>
-                                    <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, marginBottom: 0, color: "#efefef" }}>
+                                    <div style={{ ...styles.titre_metro,fontSize: 23, textAlign: "left", marginTop: 0, marginBottom: 0, color: "#efefef" }}>
                                         {joueur.id_cossy}
                                     </div>
                                 </div>
                                 <div>
                                     {joueur.performance != 1 ?
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{ ...styles.titre_metro,fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Performance saison actuel : {joueur.performance}eme
                                         </div> :
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Performance saison actuel : {joueur.performance}er
                                         </div>
                                     }
 
                                     {joueur.regulariter != 1 ?
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Regulariter saison actuel : {joueur.regulariter}eme
                                         </div> :
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Regulariter saison actuel : {joueur.regulariter}er
                                         </div>
                                     }
@@ -99,40 +93,40 @@ export default function Player() {
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: 'space-around' }}>
                                 <div>
                                     {joueur.performance != 1 ?
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Performance global : {joueur.performance}eme
                                         </div> :
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Performance global : {joueur.performance}er
                                         </div>
                                     }
                                     {joueur.regulariter != 1 ?
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Regulariter global : {joueur.regulariter}eme
                                         </div> :
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Regulariter global : {joueur.regulariter}er
                                         </div>
                                     }
                                 </div>
                                 <div>
                                     {joueur.performance != 1 ?
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Performance saison precedante : {joueur.performance}eme
                                         </div> :
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Performance saison precedante : {joueur.performance}er
                                         </div>
                                     }
                                     {joueur.regulariter != 1 ?
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Regulariter saison precedante : {joueur.regulariter}eme
                                         </div> :
-                                        <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                        <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                             Regulariter saison precedante : {joueur.regulariter}er
                                         </div>
                                     }
-                                    <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                                    <div style={{...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                         {joueur.rank}
                                     </div>
                                 </div>
@@ -150,21 +144,23 @@ export default function Player() {
                             marginRight: 10,
                             justifyContent: "space-around",
                             alignItems: "center",
+                            minHeight: 50,
+                            alignItems: "center"
                         }}>
-                            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10 }}>
+                            <div style={{...styles.titre_metro, fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%",  }}>
                                 Date event :
                         </div>
 
-                            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10 }}>
+                            <div style={{...styles.titre_metro, fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", }}>
                                 Place :
                         </div>
-                            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "25%", marginTop: 10, marginBottom: 10 }}>
+                            <div style={{...styles.titre_metro, fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "25%",  }}>
                                 Event :
                         </div>
-                            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10 }}>
+                            <div style={{...styles.titre_metro, fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%",}}>
                                 Deck :
                         </div>
-                            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10 }}>
+                            <div style={{...styles.titre_metro, fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", }}>
                                 Rank event :
                         </div>
                         </div>
@@ -177,20 +173,22 @@ export default function Player() {
                             borderRadius: "30px",
                             marginTop: 20,
                             marginBottom: 10,
+                            paddingBottom: "1em"
                         }}>
                             {results.map((result, index) => (
                                 <div style={{
                                     display: "flex",
                                     flexDirection: "row",
                                     justifyContent: "space-around",
+                                    marginTop: 15
                                 }}>
-                                    <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 15, fontSize: 25, width: "15%" }}>
+                                    <div style={{...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "15%" }}>
                                         {(new Date(result.date_event)).getDate()} /  {(new Date(result.date_event)).getMonth() + 1}
                                     </div>
-                                    <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 15, fontSize: 25, width: "10%" }}>
+                                    <div style={{...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea",  fontSize: 25, width: "10%" }}>
                                         {result.place}
                                     </div>
-                                    <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 15, fontSize: 25, width: "25%" }}>
+                                    <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "25%" }}>
                                         <Link key={index} href={{
                                             pathname: "/Event/Events",
                                             query: { event_id: result.id_event },
@@ -200,10 +198,10 @@ export default function Player() {
                                             </a>
                                         </Link>
                                     </div>
-                                    <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 15, fontSize: 25, width: "15%" }}>
+                                    <div style={{...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea",  fontSize: 25, width: "15%" }}>
                                         {result.deck_joueur}
                                     </div>
-                                    <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 15, fontSize: 25, width: "10%" }}>
+                                    <div style={{...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea",  fontSize: 25, width: "10%" }}>
                                         {result.rating_event}
                                     </div>
                                 </div>

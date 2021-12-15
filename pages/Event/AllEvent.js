@@ -22,18 +22,12 @@ export default function AllEvent() {
     })
     return (
         <div style={{
-            minHeight: "100vh", overflowX: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
+            minHeight: "100vh", overflow: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
             height: "100%",
             backgroundRepeat: "no-repeat",
             backgroundSize: "30%",
             backgroundPosition: "right top",
         }}>
-            <style jsx global>{`
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    `}</style>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -44,7 +38,7 @@ export default function AllEvent() {
                     <div style={{ fontSize: 30, textAlign: "center", fontFamily: "Ariq", color: "#0d8d40", marginTop: 30, marginBottom: 30 }}>
                         Liste des Evenement en France :
                 </div>
-                    <div style={{...styles.bordure_g, borderRadius: "30px", marginRight: 20 }}>
+                    <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20 }}>
                         {lastEvent.map((Event, index) => (
                             <Link href={{
                                 pathname: "/Event/Events",
@@ -56,19 +50,20 @@ export default function AllEvent() {
                                         flexDirection: "row",
                                         justifyContent: "space-around",
                                         alignItems: "center",
-                                        backgroundColor: (index % 2 ? "black" : null)
+                                        backgroundColor: (index % 2 ? "black" : null),
+                                        minHeight: 50,
+                                        alignItems: "center"
                                     }}>
-
-                                        <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "15%" }}>
+                                        <div style={{...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "15%" }}>
                                             {Event.date_event}
                                         </div>
-                                        <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "25%" }}>
+                                        <div style={{...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "25%" }}>
                                             {Event.lieu_event}
                                         </div>
-                                        <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "25%" }} >
+                                        <div style={{...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "25%" }} >
                                             {Event.nom_event}
                                         </div>
-                                        <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "5%", }}>
+                                        <div style={{ ...styles.titre_metro,textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "5%", }}>
                                             {Event.rating_event}
                                         </div>
                                     </div>

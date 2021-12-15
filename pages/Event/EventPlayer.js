@@ -38,13 +38,12 @@ export default function EventPlayer() {
     }
     return (
         <div style={{
-            minHeight: "100vh", overflowX: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
+            minHeight: "100vh", overflow: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
             height: "100%",
             backgroundRepeat: "no-repeat",
             backgroundSize: "30%",
             backgroundPosition: "right top",
         }}>
-
             <div style={{
                 display: "flex",
                 flexDirection: "row",
@@ -68,7 +67,7 @@ export default function EventPlayer() {
 
                                     <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around", marginTop: 10, marginLeft: 15 }}>
                                         <div>
-                                            <div style={{ fontSize: 23, textAlign: "left", color: "#efefef" }}>
+                                            <div style={{ ...styles.titre_metro,fontSize: 23, textAlign: "left", color: "#efefef" }}>
                                                 <Link href={{
                                                     pathname: "/Player/Player",
                                                     query: { id_cossy: results.id_cossy },
@@ -76,28 +75,28 @@ export default function EventPlayer() {
                                                     <a>{results.prenom_joueur} {results.nom_joueur}</a>
                                                 </Link>
                                             </div>
-                                            <div style={{ fontSize: 20, textAlign: "left", color: "#efefef" }}>
+                                            <div style={{...styles.titre_metro, fontSize: 20, textAlign: "left", color: "#efefef" }}>
                                                 {results.id_cossy}
                                             </div>
-                                            <div style={{ fontSize: 20, textAlign: "left", color: "#efefef" }}>
+                                            <div style={{...styles.titre_metro, fontSize: 20, textAlign: "left", color: "#efefef" }}>
                                                 Deck : {results.deck_joueur}
                                             </div>
                                         </div>
                                         {results.toped > 0 ? 
                                             (results.toped == 1 ?
-                                                <div style={{ fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                <div style={{...styles.titre_metro, fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
                                                     {results.toped}er
                                                 </div> :
-                                                <div style={{ fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                <div style={{...styles.titre_metro, fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
                                                     {results.toped}eme
                                                 </div>
                                                 )
                                         :
                                             (results.place == 1 ?
-                                                    <div style={{ fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                    <div style={{...styles.titre_metro, fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
                                                         {results.place}er
                                                     </div> :
-                                                    <div style={{ fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                    <div style={{...styles.titre_metro, fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
                                                         {results.place}eme
                                                     </div>
                                             )
@@ -111,15 +110,15 @@ export default function EventPlayer() {
                                                 query: { event_id: results.id_event },
                                             }}>
                                                 <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                                                    <div style={{ fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                    <div style={{...styles.titre_metro, fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
                                                         <div>
                                                             {events.nom_event}
                                                         </div>
                                                     </div>
-                                                    <div style={{ fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                    <div style={{...styles.titre_metro, fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
                                                         {(new Date(events.date_event)).getDate()} /  {(new Date(events.date_event)).getMonth() + 1}
                                                     </div>
-                                                    <div style={{ fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                                    <div style={{...styles.titre_metro, fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
                                                         {events.lieu_event}
                                                     </div>
                                                 </a>
