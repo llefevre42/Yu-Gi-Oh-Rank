@@ -21,7 +21,7 @@ export default function Arbo() {
                     </a>
                 </Link>
                 <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "80%", alignSelf: "center"}}></div>
-                <Link href="/Event/Events">
+                <Link href="/Player/AllPlayer">
                     <a style={{}}>
                         <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 20, marginBottom: 20 }}>
                             Player
