@@ -1,105 +1,71 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Arbo from './../../components/Arbo'
-import Header from './../../components/Header'
 import styles from '../../Styles/globalStyle'
+import HeadTab from './../../components/HeadTab'
+import CellTab from './../../components/CellTab'
+import BackGround from '../../components/BackGround';
 
 export default function RankPlayer() {
     const router = useRouter()
-
-    const results =
-    {
-        player: "125", date: "26/08/2021", rank: "B+", resu: [
-            { place: '1', nom: 'samir bachar', team: 'bcp', point: '100' },
-            { place: '2', nom: 'gab soucis', team: 'royality', point: '90' },
-            { place: '3', nom: 'rayan jabri', team: 'bcp', point: '87' },
-            { place: '4', nom: 'pierre burgal', team: 'goat', point: '78' },
-            { place: '5', nom: 'ludovic lefevre', team: 'sgc', point: '67' },
-            { place: '6', nom: 'sebastien Ma', team: 'none', point: '55' },
-            { place: '7', nom: 'lancelot lucas', team: 'bcp', point: '34' },
-            { place: '8', nom: 'florian fagardo', team: 'goat', point: '27' },
-        ]
-    };
+    const [players, getAllPlayer] = useState([]);
+    useEffect(() => {
+        getAllPlayers();
+    }, []);
+    function getAllPlayers() {
+        fetch('http://localhost:3001/getallplayer')
+            .then(response => response.json())
+            .then(data => {
+                getAllPlayer(data);
+            });
+    }
 
     return (
-        <div style={{
-            minHeight: "100vh", overflow: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
-            height: "100%",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "30%",
-            backgroundPosition: "right top",
-        }}>
+        <BackGround>
+
+            <div style={{ fontSize: 40, textAlign: "center", color: "#efefef" }}>
+                Rank pour la saison actuel
+                    </div>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
+                marginTop: 10,
+                marginLeft: 10,
+                marginRight: 30,
+                justifyContent: "space-around",
+                alignItems: "center",
             }}>
-             <Arbo/>
-                <div style={{ width: "100%", marginLeft: 30 }}>
-                <Header/>
-
-                    <div style={{ fontSize: 40, textAlign: "center", color: "#efefef" }}>
-                        Rank pour la saison actuel
-                    </div>
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        marginTop: 10,
-                        marginLeft: 10,
-                        marginRight: 30,
-                    }}>
-                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10 }}>
-                            Rank :
-                        </div>
-
-                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
-                            Joueur :
-                        </div>
-                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
-                            Team :
-                        </div>
-                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
-                            Point :
-                        </div>
-                    </div>
-                    <div style={{
-                      ...styles.bordure_g,
-                        borderRadius: "30px",
-                        display: "flex",
-                        flexDirection: "column",
-                        marginTop: 10,
-                        marginLeft: 10,
-                        marginRight: 30,
-                        overflow: 'hidden',
-                    }}>
-                        {results.resu.map((result, index) => (
-                            <Link key={index} href="/Event/EventPlayer">
-                                <div style={{
-                                    display: "flex", flexDirection: "row",
-                                    justifyContent: "space-around",
-                                    backgroundColor: (index % 2 ? "black" : null),
-                                    alignItems: "center",
-                                }}>
-
-                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10 }}>
-                                        {result.place}
-                                    </div>
-
-                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
-                                        {result.nom}
-                                    </div>
-                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
-                                        {result.team}
-                                    </div>
-                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
-                                        {result.point}
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
+                <HeadTab text={"Rank :"} size={"15%"}></HeadTab>
+                <HeadTab text={"Joueur :"} size={"30%"}></HeadTab>
+                <HeadTab text={"Team :"} size={"30%"}></HeadTab>
+                <HeadTab text={"Point :"} size={"15%"}></HeadTab>
             </div>
-        </div>
+            <div style={{
+                ...styles.bordure_g,
+                borderRadius: "30px",
+                display: "flex",
+                flexDirection: "column",
+                marginTop: 10,
+                marginLeft: 10,
+                marginRight: 30,
+                overflow: 'hidden',
+            }}>
+                {players.map((player, index) => (
+                    <Link key={index} href="/Event/EventPlayer">
+                        <div style={{
+                            display: "flex", flexDirection: "row",
+                            justifyContent: "space-around",
+                            backgroundColor: (index % 2 ? "black" : null),
+                            alignItems: "center",
+                        }}>
+                            <CellTab text={index + 1} size={"15%"}></CellTab>
+                            <CellTab text={player.nom_joueur + ' ' + player.prenom_joueur} size={"30%"}></CellTab>
+                            <CellTab text={player.team_joueur} size={"30%"}></CellTab>
+                            <CellTab text={player.point_joueur} size={"15%"}></CellTab>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+        </BackGround>
     )
 }

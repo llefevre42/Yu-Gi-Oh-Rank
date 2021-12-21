@@ -106,6 +106,19 @@ const getAllEvent = () => {
     })
   })
 }
+const getAllPlayer = () => {
+  return new Promise(function (resolve, reject) {
+    pool.query('SELECT * FROM public."Joueur" ORDER BY id_cossy ASC', (error, results) => {
+      if (error) {
+        reject(error)
+      }
+      if (results != undefined)
+        resolve(results.rows);
+      else
+        resolve(results);
+    })
+  })
+}
 const getAllTeam = () => {
   return new Promise(function (resolve, reject) {
     pool.query('SELECT * FROM public."Team" ORDER BY id_team ASC', (error, results) => {
@@ -161,6 +174,7 @@ const getEventResultat2 = (id_event) => {
 module.exports = {
   getOneEvent,
   getAllEvent,
+  getAllPlayer,
   getEventResultat,
   getEventResultat2,
   getLastEvent,

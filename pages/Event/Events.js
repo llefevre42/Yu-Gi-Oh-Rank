@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Arbo from './../../components/Arbo'
-import Header from './../../components/Header'
+import BackGround from '../../components/BackGround';
 import styles from '../../Styles/globalStyle'
 
 
@@ -18,16 +17,16 @@ function Titre() {
             justifyContent: "space-around",
             alignItems: "center",
         }}>
-            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10,...styles.titre_metro }}>
+            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
                 Place :
             </div>
             <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
                 Joueur :
             </div>
-            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10,...styles.titre_metro }}>
+            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
                 Deck :
             </div>
-            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10,...styles.titre_metro }}>
+            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
                 Point :
             </div>
         </div>
@@ -69,137 +68,121 @@ export default function Events() {
     const jour = date.getDate()
     const mois = (date.getMonth() + 1)
     return (
-        <div style={{
-            minHeight: "100vh", overflow: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
-            height: "100%",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "30%",
-            backgroundPosition: "right top",
-        }}>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-            }}>
-                <Arbo />
-                <div style={{ width: "100%", marginLeft: 30 }}>
-                    <Header />
-
-                    <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_metro }}>
-                        {events.nom_event} -  {events.rating_event}
-                    </div>
-                    <div style={{ fontSize: 25, textAlign: "center", color: "#efefef", ...styles.titre_metro }}>
-                        {jour}/{mois} - {events.nbr_player_event} Joueur
-                    </div>
-                    {events.top_event > 0 ? <div style={{ fontSize: 25, textAlign: "center", color: "#efefef", ...styles.titre_metro }}>
-                        Top Cut : {events.top_event}
-                    </div> : null}
-
-                    {events.texte_event ? <div style={{ fontSize: 25, textAlign: "center", color: "#efefef",...styles.titre_metro, marginTop: 20 }}>
-                        {events.texte_event}
-                    </div> : null}
-                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
-                        {events.repart_event ? <img src={events.repart_event} style={{ width: '45%', marginTop: 10,...styles.bordure_g }} /> : null}
-                        <div style={{ marginRight: 5, marginLeft: 5 }}></div>
-                        {events.repart_top_event ? <img src={events.repart_top_event} style={{ width: '45%', marginTop: 10,...styles.bordure_g}} /> : null}
-                    </div>
-                    {results && events.top_event > 0 ?
-                        <div>
-                            <div style={{ fontSize: 40, textAlign: "center", color: "#efefef",...styles.titre_metro, marginTop: 20 }}>
-                                Top Cut :
-                               </div>
-                            <Titre></Titre>
-                            <div style={{
-                             ...styles.bordure_g,
-                                borderRadius: "30px",
-                                display: "flex",
-                                flexDirection: "column",
-                                marginTop: 10,
-                                marginLeft: 10,
-                                marginRight: 30,
-                                overflow: 'hidden',
-                            }}>
-                                {results.sort(function (a, b) {
-                                    return a.toped - b.toped;
-                                }).map((result, index) => (
-                                    <Link key={index} href={{
-                                        pathname: "/Event/EventPlayer",
-                                        query: { event_id: result.id_event, cossy_id: result.id_cossy },
-                                    }}>
-                                        <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                                            <div style={{
-                                                display: "flex", flexDirection: "row",
-                                                justifyContent: "space-around",
-                                                backgroundColor: (index % 2 ? "black" : null),
-                                                alignItems: "center",
-                                            }}>
-
-                                                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                                    {result.toped}
-                                                </div>
-                                                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                                    {result.nom_joueur} {result.prenom_joueur}
-                                                </div>
-                                                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                                    {result.deck_joueur}
-                                                </div>
-                                                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10, ...styles.titre_metro, color: ((Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? 'green' : 'white') }}>
-                                                    {(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? '+' : null}{(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1}
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </Link>
-                                ))}
-                            </div>
-                        </div> : null}
-                    {results ? <div>
-                        <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_metro, marginTop: 20 }}>
-                            Round :
-                    </div>
-                        <Titre></Titre>
-                        <div style={{
-                          ...styles.bordure_g,
-                            borderRadius: "30px",
-                            display: "flex",
-                            flexDirection: "column",
-                            marginTop: 10,
-                            marginLeft: 10,
-                            marginRight: 30,
-                            overflow: 'hidden',
-                        }}>
-                            {results.sort(function (a, b) {
-                                return a.place - b.place;
-                            }).map((result, index) => (
-                                <Link key={index} href={{
-                                    pathname: "/Event/EventPlayer",
-                                    query: { event_id: result.id_event, cossy_id: result.id_cossy },
-                                }}>
-                                    <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                                        <div style={{
-                                            display: "flex", flexDirection: "row",
-                                            justifyContent: "space-around",
-                                            backgroundColor: (index % 2 ? "black" : null),
-                                            alignItems: "center",
-                                        }}>
-                                            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                                {result.place}
-                                            </div>
-                                            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                                {result.nom_joueur} {result.prenom_joueur}
-                                            </div>
-                                            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                                {result.deck_joueur}
-                                            </div>
-                                            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10, ...styles.titre_metro, color: ((Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? 'green' : 'white') }}>
-                                                {(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? '+' : null}{(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1}
-                                            </div>
-                                        </div>
-                                    </a>
-                                </Link>
-                            ))}
-                        </div>
-                    </div> : null}
-                </div>
+        <BackGround>
+            <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_metro }}>
+                {events.nom_event} -  {events.rating_event}
             </div>
-        </div>
+            <div style={{ fontSize: 25, textAlign: "center", color: "#efefef", ...styles.titre_metro }}>
+                {jour}/{mois} - {events.nbr_player_event} Joueur
+                    </div>
+            {events.top_event > 0 ? <div style={{ fontSize: 25, textAlign: "center", color: "#efefef", ...styles.titre_metro }}>
+                Top Cut : {events.top_event}
+            </div> : null}
+
+            {events.texte_event ? <div style={{ fontSize: 25, textAlign: "center", color: "#efefef", ...styles.titre_metro, marginTop: 20 }}>
+                {events.texte_event}
+            </div> : null}
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
+                {events.repart_event ? <img src={events.repart_event} style={{ width: '45%', marginTop: 10, ...styles.bordure_g }} /> : null}
+                <div style={{ marginRight: 5, marginLeft: 5 }}></div>
+                {events.repart_top_event ? <img src={events.repart_top_event} style={{ width: '45%', marginTop: 10, ...styles.bordure_g }} /> : null}
+            </div>
+            {results && events.top_event > 0 ?
+                <div>
+                    <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_metro, marginTop: 20 }}>
+                        Top Cut :
+                               </div>
+                    <Titre></Titre>
+                    <div style={{
+                        ...styles.bordure_g,
+                        borderRadius: "30px",
+                        display: "flex",
+                        flexDirection: "column",
+                        marginTop: 10,
+                        marginLeft: 10,
+                        marginRight: 30,
+                        overflow: 'hidden',
+                    }}>
+                        {results.sort(function (a, b) {
+                            return a.toped - b.toped;
+                        }).map((result, index) => (
+                            <Link key={index} href={{
+                                pathname: "/Event/EventPlayer",
+                                query: { event_id: result.id_event, cossy_id: result.id_cossy },
+                            }}>
+                                <a style={{ color: "inherit", textDecoration: "inherit" }}>
+                                    <div style={{
+                                        display: "flex", flexDirection: "row",
+                                        justifyContent: "space-around",
+                                        backgroundColor: (index % 2 ? "black" : null),
+                                        alignItems: "center",
+                                    }}>
+
+                                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
+                                            {result.toped}
+                                        </div>
+                                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
+                                            {result.nom_joueur} {result.prenom_joueur}
+                                        </div>
+                                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
+                                            {result.deck_joueur}
+                                        </div>
+                                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10, ...styles.titre_metro, color: ((Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? 'green' : 'white') }}>
+                                            {(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? '+' : null}{(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1}
+                                        </div>
+                                    </div>
+                                </a>
+                            </Link>
+                        ))}
+                    </div>
+                </div> : null}
+            {results ? <div>
+                <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_metro, marginTop: 20 }}>
+                    Round :
+                    </div>
+                <Titre></Titre>
+                <div style={{
+                    ...styles.bordure_g,
+                    borderRadius: "30px",
+                    display: "flex",
+                    flexDirection: "column",
+                    marginTop: 10,
+                    marginLeft: 10,
+                    marginRight: 30,
+                    overflow: 'hidden',
+                }}>
+                    {results.sort(function (a, b) {
+                        return a.place - b.place;
+                    }).map((result, index) => (
+                        <Link key={index} href={{
+                            pathname: "/Event/EventPlayer",
+                            query: { event_id: result.id_event, cossy_id: result.id_cossy },
+                        }}>
+                            <a style={{ color: "inherit", textDecoration: "inherit" }}>
+                                <div style={{
+                                    display: "flex", flexDirection: "row",
+                                    justifyContent: "space-around",
+                                    backgroundColor: (index % 2 ? "black" : null),
+                                    alignItems: "center",
+                                }}>
+                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
+                                        {result.place}
+                                    </div>
+                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
+                                        {result.nom_joueur} {result.prenom_joueur}
+                                    </div>
+                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
+                                        {result.deck_joueur}
+                                    </div>
+                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10, ...styles.titre_metro, color: ((Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? 'green' : 'white') }}>
+                                        {(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? '+' : null}{(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1}
+                                    </div>
+                                </div>
+                            </a>
+                        </Link>
+                    ))}
+                </div>
+            </div> : null}
+        </BackGround>
     )
 }
