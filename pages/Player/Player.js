@@ -153,10 +153,7 @@ export default function Player() {
                 }}>
                     {results.map((result, index) => (
                         <div style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "space-around",
-                            alignItems: "center",
+                            ...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null)
                         }}>
                             <CellTab text={(new Date(result.date_event)).getDate() + '/' + (new Date(result.date_event)).getMonth() + 1} size={"15%"}></CellTab>
                             <CellTab text={result.place} size={"10%"}></CellTab>

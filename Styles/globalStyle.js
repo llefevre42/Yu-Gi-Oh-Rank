@@ -13,6 +13,14 @@ const styles = {
          fontWeight: "bold",
          color: "#eaeaea"
     },
+    tab_medium_element:{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        alignItems: "center",
+        minHeight: 50,
+        alignItems: "center"
+    }
 
 
 }

@@ -32,16 +32,8 @@ export default function AllEvent() {
                         pathname: "/Event/Events",
                         query: { event_id: Event.id_event }
                     }} >
-                        <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "space-around",
-                                alignItems: "center",
-                                backgroundColor: (index % 2 ? "black" : null),
-                                minHeight: 50,
-                                alignItems: "center"
-                            }}>
+                        <a>
+                            <div style={{...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null)}}>
                                 <CellTab text={Event.date_event} size={"15%"}></CellTab>
                                 <CellTab text={Event.lieu_event} size={"25%"}></CellTab>
                                 <CellTab text={Event.nom_event} size={"25%"}></CellTab>

@@ -49,13 +49,7 @@ export default function AllTeam() {
                         query: { id_team: team.id_team }
                     }} >
                         <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "space-around",
-                                alignItems: "center",
-                                backgroundColor: team.couleur_team//(index % 2 ? "black" : null)
-                            }}>
+                            <div style={{...styles.tab_medium_element, backgroundColor: team.couleur_team}}>
                                 <CellTab text={index + 1} size={"10%"}></CellTab>
                                 <CellTab text={team.nom_team} size={"30%"}></CellTab>
                                 <CellTab text={team.total_point_team} size={"15%"}></CellTab>

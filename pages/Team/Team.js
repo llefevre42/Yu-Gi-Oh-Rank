@@ -83,13 +83,7 @@ export default function Team() {
                             query: { id_team: team.id_team }
                         }} >
                             <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                                <div style={{
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    justifyContent: "space-around",
-                                    alignItems: "center",
-                                    backgroundColor: team.couleur_team//(index % 2 ? "black" : null)
-                                }}>
+                                <div style={{...styles.tab_medium_element,backgroundColor: team.couleur_team}}>
                                     <img src={team.logo_team} style={{ width: 100, height: 100 }}></img>
                                     <CellTab text={"ludovic lefevre"} size={"30%"}></CellTab>
                                     <CellTab text={"120"} size={"15%"}></CellTab>

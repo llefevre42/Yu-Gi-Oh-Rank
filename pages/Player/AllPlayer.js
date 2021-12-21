@@ -43,15 +43,7 @@ export default function AllPlayer() {
                         query: { event_id: Event.id_event }
                     }} >
                         <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                            <div style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "space-around",
-                                alignItems: "center",
-                                backgroundColor: (index % 2 ? "black" : null),
-                                minHeight: 50,
-                                alignItems: "center"
-                            }}>
+                            <div style={{...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null)}}>
                                 <CellTab text={player.nom_joueur} size={"15%"}></CellTab>
                                 <CellTab text={player.prenom_joueur} size={"25%"}></CellTab>
                                 <CellTab text={player.id_cossy} size={"25%"}></CellTab>

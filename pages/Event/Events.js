@@ -65,10 +65,20 @@ export default function Events() {
                     <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_metro, marginTop: 20 }}>
                         Top Cut :
                                </div>
-                    <HeadTab text={"Place :"} size={"10%"}></HeadTab>
-                    <HeadTab text={"Joueur :"} size={"30%"}></HeadTab>
-                    <HeadTab text={"Deck :"} size={"30%"}></HeadTab>
-                    <HeadTab text={"Point :"} size={"15%"}></HeadTab>
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        marginTop: 10,
+                        marginLeft: 10,
+                        marginRight: 30,
+                        justifyContent: "space-around",
+                        alignItems: "center",
+                    }}>
+                        <HeadTab text={"Place :"} size={"10%"}></HeadTab>
+                        <HeadTab text={"Joueur :"} size={"30%"}></HeadTab>
+                        <HeadTab text={"Deck :"} size={"30%"}></HeadTab>
+                        <HeadTab text={"Point :"} size={"15%"}></HeadTab>
+                    </div>
                     <div style={{
                         ...styles.bordure_g,
                         borderRadius: "30px",
@@ -110,7 +120,20 @@ export default function Events() {
                 <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_metro, marginTop: 20 }}>
                     Round :
                     </div>
-                <Titre></Titre>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginTop: 10,
+                    marginLeft: 10,
+                    marginRight: 30,
+                    justifyContent: "space-around",
+                    alignItems: "center",
+                }}>
+                    <HeadTab text={"Place :"} size={"10%"}></HeadTab>
+                    <HeadTab text={"Joueur :"} size={"30%"}></HeadTab>
+                    <HeadTab text={"Deck :"} size={"30%"}></HeadTab>
+                    <HeadTab text={"Point :"} size={"15%"}></HeadTab>
+                </div>
                 <div style={{
                     ...styles.bordure_g,
                     borderRadius: "30px",
@@ -129,12 +152,7 @@ export default function Events() {
                             query: { event_id: result.id_event, cossy_id: result.id_cossy },
                         }}>
                             <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                                <div style={{
-                                    display: "flex", flexDirection: "row",
-                                    justifyContent: "space-around",
-                                    backgroundColor: (index % 2 ? "black" : null),
-                                    alignItems: "center",
-                                }}>
+                                <div style={{...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null)}}>
                                     <CellTab text={result.toped} size={"10%"}></CellTab>
                                     <CellTab text={result.nom_joueur + ' ' + result.prenom_joueur} size={"30%"}></CellTab>
                                     <CellTab text={result.deck_joueur} size={"30%"}></CellTab>

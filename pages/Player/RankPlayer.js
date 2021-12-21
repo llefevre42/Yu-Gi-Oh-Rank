@@ -52,12 +52,7 @@ export default function RankPlayer() {
             }}>
                 {players.map((player, index) => (
                     <Link key={index} href="/Event/EventPlayer">
-                        <div style={{
-                            display: "flex", flexDirection: "row",
-                            justifyContent: "space-around",
-                            backgroundColor: (index % 2 ? "black" : null),
-                            alignItems: "center",
-                        }}>
+                        <div style={{...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null)}}>
                             <CellTab text={index + 1} size={"15%"}></CellTab>
                             <CellTab text={player.nom_joueur + ' ' + player.prenom_joueur} size={"30%"}></CellTab>
                             <CellTab text={player.team_joueur} size={"30%"}></CellTab>
