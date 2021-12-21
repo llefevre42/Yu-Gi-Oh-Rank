@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
 import BackGround from '../../components/BackGround';
 import styles from '../../Styles/globalStyle'
+import HeadTab from './../../components/HeadTab'
+import CellTab from './../../components/CellTab'
 
 export default function AllPlayer() {
     const [players, getAllPlayer] = useState([]);
@@ -29,18 +31,10 @@ export default function AllPlayer() {
                 justifyContent: "space-around",
                 alignItems: "center",
             }}>
-                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10 }}>
-                    Rank :
-                        </div>
-                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "25%", marginTop: 10, marginBottom: 10 }}>
-                    Joueur :
-                        </div>
-                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "25%", marginTop: 10, marginBottom: 10 }}>
-                    Cossy Id :
-                        </div>
-                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "5%", marginTop: 10, marginBottom: 10 }}>
-                    Point :
-                        </div>
+                <HeadTab text={"Rank :"} size={"15%"}></HeadTab>
+                <HeadTab text={"Joueur :"} size={"25%"}></HeadTab>
+                <HeadTab text={"Cossy Id :"} size={"25%"}></HeadTab>
+                <HeadTab text={"Point :"} size={"5%"}></HeadTab>
             </div>
             <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20 }}>
                 {players.map((player, index) => (
@@ -58,18 +52,10 @@ export default function AllPlayer() {
                                 minHeight: 50,
                                 alignItems: "center"
                             }}>
-                                <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "15%" }}>
-                                    {player.nom_joueur}
-                                </div>
-                                <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "25%" }}>
-                                    {player.prenom_joueur}
-                                </div>
-                                <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "25%" }} >
-                                    {player.id_cossy}
-                                </div>
-                                <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "5%", }}>
-                                    {player.point_joueur} 0
-                                        </div>
+                                <CellTab text={player.nom_joueur} size={"15%"}></CellTab>
+                                <CellTab text={player.prenom_joueur} size={"25%"}></CellTab>
+                                <CellTab text={player.id_cossy} size={"25%"}></CellTab>
+                                <CellTab text={player.point_joueur} size={"5%"}></CellTab>
                             </div>
                         </a>
                     </Link>

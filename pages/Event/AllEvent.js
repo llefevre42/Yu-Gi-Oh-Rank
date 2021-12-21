@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
 import styles from '../../Styles/globalStyle'
 import BackGround from '../../components/BackGround';
+import HeadTab from './../../components/HeadTab'
+import CellTab from './../../components/CellTab'
 
 export default function AllEvent() {
     const [lastEvent, getLastEvents] = useState([]);
@@ -40,18 +42,10 @@ export default function AllEvent() {
                                 minHeight: 50,
                                 alignItems: "center"
                             }}>
-                                <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "15%" }}>
-                                    {Event.date_event}
-                                </div>
-                                <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "25%" }}>
-                                    {Event.lieu_event}
-                                </div>
-                                <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "25%" }} >
-                                    {Event.nom_event}
-                                </div>
-                                <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "5%", }}>
-                                    {Event.rating_event}
-                                </div>
+                                <CellTab text={Event.date_event} size={"15%"}></CellTab>
+                                <CellTab text={Event.lieu_event} size={"25%"}></CellTab>
+                                <CellTab text={Event.nom_event} size={"25%"}></CellTab>
+                                <CellTab text={Event.rating_event} size={"5%"}></CellTab>
                             </div>
                         </a>
                     </Link>

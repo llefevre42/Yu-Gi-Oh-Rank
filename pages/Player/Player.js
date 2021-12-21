@@ -150,21 +150,16 @@ export default function Player() {
                     borderRadius: "30px",
                     marginTop: 20,
                     marginBottom: 10,
-                    paddingBottom: "1em"
                 }}>
                     {results.map((result, index) => (
                         <div style={{
                             display: "flex",
                             flexDirection: "row",
                             justifyContent: "space-around",
-                            marginTop: 15
+                            alignItems: "center",
                         }}>
-                            <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "15%" }}>
-                                {(new Date(result.date_event)).getDate()} /  {(new Date(result.date_event)).getMonth() + 1}
-                            </div>
-                            <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "10%" }}>
-                                {result.place}
-                            </div>
+                            <CellTab text={(new Date(result.date_event)).getDate() + '/' + (new Date(result.date_event)).getMonth() + 1} size={"15%"}></CellTab>
+                            <CellTab text={result.place} size={"10%"}></CellTab>
                             <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "25%" }}>
                                 <Link key={index} href={{
                                     pathname: "/Event/Events",
@@ -174,14 +169,12 @@ export default function Player() {
                                         {result.id_event}
                                     </a>
                                 </Link>
+
                             </div>
-                            <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "15%" }}>
-                                {result.deck_joueur}
-                            </div>
-                            <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "10%" }}>
-                                {result.rating_event}
-                            </div>
+                            <CellTab text={result.deck_joueur} size={"15%"}></CellTab>
+                            <CellTab text={result.rating_event} size={"10%"}></CellTab>
                         </div>
+
                     ))}
                 </div>
             </div>

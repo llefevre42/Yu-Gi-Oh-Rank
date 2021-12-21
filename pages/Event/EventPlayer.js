@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import BackGround from '../../components/BackGround';
 import styles from '../../Styles/globalStyle'
-
+import HeadTab from './../../components/HeadTab'
+import CellTab from './../../components/CellTab'
 
 export default function EventPlayer() {
     const router = useRouter()

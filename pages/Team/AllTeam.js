@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
 import BackGround from '../../components/BackGround';
 import styles from '../../Styles/globalStyle'
+import HeadTab from './../../components/HeadTab'
+import CellTab from './../../components/CellTab'
 
 export default function AllTeam() {
     const [teams, getAllTeams] = useState([]);
@@ -30,22 +32,15 @@ export default function AllTeam() {
                 marginTop: 10,
                 marginLeft: 10,
                 marginRight: 20,
+                marginBottom: 20,
                 justifyContent: "space-around",
                 alignItems: "center",
             }}>
-                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10 }}>
-                    Rank :
-                        </div>
+                <HeadTab text={"Rank :"} size={"10%"}></HeadTab>
+                <HeadTab text={"Team :"} size={"30%"}></HeadTab>
+                <HeadTab text={"Point :"} size={"15%"}></HeadTab>
+                <HeadTab text={"Logo :"} size={"8%"}></HeadTab>
 
-                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10 }}>
-                    Team :
-                        </div>
-                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10 }}>
-                    Point :
-                        </div>
-                <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "8%", marginTop: 10, marginBottom: 10 }}>
-                    Logo :
-                        </div>
             </div>
             <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20, overflow: "hidden" }}>
                 {teams.map((team, index) => (
@@ -61,17 +56,10 @@ export default function AllTeam() {
                                 alignItems: "center",
                                 backgroundColor: team.couleur_team//(index % 2 ? "black" : null)
                             }}>
-                                <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "10%" }}>
-                                    {index + 1}
-                                </div>
+                                <CellTab text={index + 1} size={"10%"}></CellTab>
+                                <CellTab text={team.nom_team} size={"30%"}></CellTab>
+                                <CellTab text={team.total_point_team} size={"15%"}></CellTab>
 
-                                <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "30%" }}>
-                                    {team.nom_team}
-                                </div>
-
-                                <div style={{ textAlign: "center", fontWeight: "bold", color: "#eaeaea", marginTop: 10, marginBottom: 10, fontSize: 25, width: "15%" }}>
-                                    {team.total_point_team}
-                                </div>
                                 <img src={team.logo_team} style={{ width: 100, height: 100 }}></img>
                             </div>
                         </a>

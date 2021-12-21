@@ -4,35 +4,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import BackGround from '../../components/BackGround';
 import styles from '../../Styles/globalStyle'
-
-
-function Titre() {
-    return (
-        <div style={{
-            display: "flex",
-            flexDirection: "row",
-            marginTop: 10,
-            marginLeft: 10,
-            marginRight: 20,
-            justifyContent: "space-around",
-            alignItems: "center",
-        }}>
-            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                Place :
-            </div>
-            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                Joueur :
-            </div>
-            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                Deck :
-            </div>
-            <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                Point :
-            </div>
-        </div>
-    )
-}
-
+import HeadTab from './../../components/HeadTab'
+import CellTab from './../../components/CellTab'
 
 export default function Events() {
     const router = useRouter()
@@ -92,7 +65,10 @@ export default function Events() {
                     <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_metro, marginTop: 20 }}>
                         Top Cut :
                                </div>
-                    <Titre></Titre>
+                    <HeadTab text={"Place :"} size={"10%"}></HeadTab>
+                    <HeadTab text={"Joueur :"} size={"30%"}></HeadTab>
+                    <HeadTab text={"Deck :"} size={"30%"}></HeadTab>
+                    <HeadTab text={"Point :"} size={"15%"}></HeadTab>
                     <div style={{
                         ...styles.bordure_g,
                         borderRadius: "30px",
@@ -117,16 +93,10 @@ export default function Events() {
                                         backgroundColor: (index % 2 ? "black" : null),
                                         alignItems: "center",
                                     }}>
+                                        <CellTab text={result.toped} size={"10%"}></CellTab>
+                                        <CellTab text={result.nom_joueur + ' ' + result.prenom_joueur} size={"30%"}></CellTab>
+                                        <CellTab text={result.deck_joueur} size={"30%"}></CellTab>
 
-                                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                            {result.toped}
-                                        </div>
-                                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                            {result.nom_joueur} {result.prenom_joueur}
-                                        </div>
-                                        <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                            {result.deck_joueur}
-                                        </div>
                                         <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10, ...styles.titre_metro, color: ((Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? 'green' : 'white') }}>
                                             {(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? '+' : null}{(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1}
                                         </div>
@@ -165,15 +135,9 @@ export default function Events() {
                                     backgroundColor: (index % 2 ? "black" : null),
                                     alignItems: "center",
                                 }}>
-                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "10%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                        {result.place}
-                                    </div>
-                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                        {result.nom_joueur} {result.prenom_joueur}
-                                    </div>
-                                    <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "30%", marginTop: 10, marginBottom: 10, ...styles.titre_metro }}>
-                                        {result.deck_joueur}
-                                    </div>
+                                    <CellTab text={result.toped} size={"10%"}></CellTab>
+                                    <CellTab text={result.nom_joueur + ' ' + result.prenom_joueur} size={"30%"}></CellTab>
+                                    <CellTab text={result.deck_joueur} size={"30%"}></CellTab>
                                     <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10, ...styles.titre_metro, color: ((Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? 'green' : 'white') }}>
                                         {(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1 > 0 ? '+' : null}{(Math.trunc(events.nbr_player_event / 8) - (result.place - 1)) * 1 + ((events.top_event / 2) - (result.toped - 1)) * 1}
                                     </div>
