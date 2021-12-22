@@ -3,7 +3,11 @@ import Header from './../components/Header'
 export default function BackGround(props) {
     return (
         <div style={{
-            minHeight: "100vh", overflow: "hidden", backgroundColor: "#22171c", backgroundImage: "url(" + "/pattern.png" + ")", width: "100%",
+            minHeight: "100vh", 
+            overflow: "hidden", 
+            backgroundColor: "#22171c", 
+            backgroundImage: "url(" + "/pattern.png" + ")", 
+            width: "100%",
             height: "100%",
             backgroundRepeat: "no-repeat",
             backgroundSize: "30%",
