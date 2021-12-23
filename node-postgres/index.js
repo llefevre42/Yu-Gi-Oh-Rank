@@ -3,6 +3,7 @@ const app = express()
 const port = 3001
 
 const getData = require('./getData')
+const sendData = require('./sendData')
 
 app.use(express.json())
 app.use(function (req, res, next) {
@@ -11,6 +12,16 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
   next();
 });
+
+app.post('/sendresult/:event/:place/:deck/:decklist/:youtube/:toped/:cossy', (req, res) => {
+  sendData.sendResultat(req.params.event,req.params.place,req.params.deck,req.params.decklist,req.params.youtube,req.params.toped,cossy)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
 
 app.get('/getoneevent/:id', (req, res) => {
   getData.getOneEvent(req.params.id)

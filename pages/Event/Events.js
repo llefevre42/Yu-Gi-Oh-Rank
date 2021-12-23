@@ -98,10 +98,9 @@ export default function Events() {
                             }}>
                                 <a style={{ color: "inherit", textDecoration: "inherit" }}>
                                     <div style={{
-                                        display: "flex", flexDirection: "row",
-                                        justifyContent: "space-around",
+                                        ...styles.tab_medium_element,
                                         backgroundColor: (index % 2 ? "black" : null),
-                                        alignItems: "center",
+
                                     }}>
                                         <CellTab text={result.toped} size={"10%"}></CellTab>
                                         <CellTab text={result.nom_joueur + ' ' + result.prenom_joueur} size={"30%"}></CellTab>
@@ -152,7 +151,7 @@ export default function Events() {
                             query: { event_id: result.id_event, cossy_id: result.id_cossy },
                         }}>
                             <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                                <div style={{...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null)}}>
+                                <div style={{ ...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null) }}>
                                     <CellTab text={result.toped} size={"10%"}></CellTab>
                                     <CellTab text={result.nom_joueur + ' ' + result.prenom_joueur} size={"30%"}></CellTab>
                                     <CellTab text={result.deck_joueur} size={"30%"}></CellTab>
