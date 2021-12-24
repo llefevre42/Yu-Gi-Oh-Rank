@@ -9,12 +9,14 @@ app.use(express.json())
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
+  res.setHeader('Access-Control-Allow-Headers', 'Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization');
   next();
 });
 
-app.post('/sendresult/:event/:place/:deck/:decklist/:youtube/:toped/:cossy', (req, res) => {
-  sendData.sendResultat(req.params.event,req.params.place,req.params.deck,req.params.decklist,req.params.youtube,req.params.toped,cossy)
+app.post('/sendresult', (req, res) => {
+  const {event,place,deck,decklist,youtube,toped,cossy} = req.body 
+  console.log("bjr:",event,place,deck,decklist,youtube,toped,cossy)
+  sendData.sendResultat(req.body)
   .then(response => {
     res.status(200).send(response);
   })

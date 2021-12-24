@@ -6,8 +6,11 @@ const pool = new Pool({
   password: 'adn59bis',
   port: 5432,
 });
-const sendResultat = (event,place,deck,decklist,youtube,toped,cossy) => {
+const sendResultat = (body) => {
     return new Promise(function (resolve, reject) {
+       
+        const {event,place,deck,decklist,youtube,toped,cossy} = body 
+        console.log("cc:",event,place,deck,decklist,youtube,toped,cossy)
       pool.query(
         'INSERT INTO public."Resultat"(id_event, place, deck_joueur, img_decklist, youtube_link, toped, id_cossy) VALUES ($1 , $2, $3 , $4 , $5 , $6 , $7 )', [event,place,deck,decklist,youtube,toped,cossy], (error, results) => {
         if (error) {
