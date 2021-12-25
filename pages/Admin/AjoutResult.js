@@ -1,17 +1,19 @@
-import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
-import BackGround from '../../components/BackGround';
-import styles from '../../Styles/globalStyle'
-import HeadTab from './../../components/HeadTab'
-import CellTab from './../../components/CellTab'
 import isPositiveOrBeZero from '../../reserveFonction/isPositiveOrBeZero';
 
-
+function ajoutPoint(point, cossy) {
+    fetch('http://localhost:3001/sendpoint', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ point, cossy })
+    })
+}
 
 export default function AjoutResult() {
     const router = useRouter()
-    const [result, setResult] = useState([{ place: '', deck: null, decklist: null, youtube: null, toped: null, cossy: '' }]);
     const [place, setPlace] = useState('');
     const [deck, setDeck] = useState('');
     const [decklist, setDecklist] = useState('');
@@ -36,20 +38,18 @@ export default function AjoutResult() {
 
 
     function sendResultat(event, place, deck, decklist, youtube, toped, cossy) {
-        console.log(JSON.stringify({event, place, deck, decklist, youtube, toped, cossy}))
-        fetch('http://localhost:3001/sendresult',{
+        let point = ((Math.trunc(events.nbr_player_event / 8) - (place - 1)) * 1 + isPositiveOrBeZero((events.top_event / 2) - (toped - 1)) * 1)
+        fetch('http://localhost:3001/sendresult', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-              },
-            body: JSON.stringify({event, place, deck, decklist, youtube, toped, cossy})
+            },
+            body: JSON.stringify({ event, place, deck, decklist, youtube, toped, cossy, point })
         })
             .then(response => response.json())
             .then(data => {
-                let point = ((Math.trunc(events.nbr_player_event / 8) - (place - 1)) * 1 + isPositiveOrBeZero((events.top_event / 2) - (toped - 1)) * 1)
                 if (point > 0)
-                    console.log("point :", point)
-                console.log("data", data)
+                    ajoutPoint(point, cossy)
             });
     }
 

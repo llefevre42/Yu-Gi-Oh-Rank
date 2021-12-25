@@ -14,9 +14,27 @@ app.use(function (req, res, next) {
 });
 
 app.post('/sendresult', (req, res) => {
-  const {event,place,deck,decklist,youtube,toped,cossy} = req.body 
-  console.log("bjr:",event,place,deck,decklist,youtube,toped,cossy)
   sendData.sendResultat(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
+app.post('/sendpoint', (req, res) => {
+  sendData.sendPoint(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
+app.post('/sendjoueur', (req, res) => {
+  sendData.sendJoueur(req.body)
   .then(response => {
     res.status(200).send(response);
   })
