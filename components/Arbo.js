@@ -1,9 +1,9 @@
 
 import Link from 'next/link'
 import styles from '../Styles/globalStyle'
-export default function Arbo() {
+export default function Arbo(visible) {
     return (
-        <div style={{...styles.bordure_g , borderRadius: "30px" ,width: "15vw", height: "90vh", marginTop: 10, marginLeft: 10, marginBottom: 10}}>
+        <div style={{ ...styles.bordure_g, borderRadius: "30px", width: "15vw", height: "90vh", marginTop: 70, marginLeft: 10, marginBottom: 10 }}>
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <Link href="/Player/RankPlayer">
                     <a style={{}}>
@@ -12,7 +12,7 @@ export default function Arbo() {
                     </div>
                     </a>
                 </Link>
-                <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "80%", alignSelf: "center"}}></div>
+                <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "80%", alignSelf: "center" }}></div>
                 <Link href="/Event/AllEvent">
                     <a style={{}}>
                         <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 20, marginBottom: 20 }}>
@@ -20,7 +20,7 @@ export default function Arbo() {
                         </div>
                     </a>
                 </Link>
-                <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "80%", alignSelf: "center"}}></div>
+                <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "80%", alignSelf: "center" }}></div>
                 <Link href="/Player/AllPlayer">
                     <a style={{}}>
                         <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 20, marginBottom: 20 }}>
@@ -28,7 +28,7 @@ export default function Arbo() {
                     </div>
                     </a>
                 </Link>
-                <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "80%", alignSelf: "center"}}></div>
+                <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "80%", alignSelf: "center" }}></div>
                 <Link href="/Team/AllTeam">
                     <a style={{}}>
                         <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 20, marginBottom: 20 }}>
@@ -36,15 +36,7 @@ export default function Arbo() {
                     </div>
                     </a>
                 </Link>
-                <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "80%", alignSelf: "center"}}></div>
-                <Link href="/Event/Events">
-                    <a style={{}}>
-                        <div style={{ fontSize: 25, textAlign: "center", ...styles.titre_pro, marginTop: 20, marginBottom: 20 }}>
-                            Organisateur
-                    </div>
-                    </a>
-                </Link>
-                <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "80%", alignSelf: "center"}}></div>
+                <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "80%", alignSelf: "center" }}></div>
                 <Link href="/Event/Events">
                     <a style={{}}>
                         <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 20, marginBottom: 20 }}>
@@ -54,5 +46,6 @@ export default function Arbo() {
                 </Link>
             </div>
         </div>
+
     )
 }

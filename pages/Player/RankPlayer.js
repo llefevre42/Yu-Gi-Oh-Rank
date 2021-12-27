@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
 import HeadTab from './../../components/HeadTab'
 import CellTab from './../../components/CellTab'
-import BackGround from '../../components/BackGround';
 
 export default function RankPlayer() {
     const router = useRouter()
@@ -21,7 +20,7 @@ export default function RankPlayer() {
     }
 
     return (
-        <BackGround>
+        <div>
 
             <div style={{ fontSize: 40, textAlign: "center", color: "#efefef" }}>
                 Rank pour la saison actuel
@@ -61,6 +60,6 @@ export default function RankPlayer() {
                     </Link>
                 ))}
             </div>
-        </BackGround>
+        </div>
     )
 }

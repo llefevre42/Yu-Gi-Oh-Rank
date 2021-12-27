@@ -23,6 +23,16 @@ app.post('/sendresult', (req, res) => {
   })
 })
 
+app.post('/sendevent', (req, res) => {
+  sendData.sendEvent(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
 app.post('/sendpoint', (req, res) => {
   sendData.sendPoint(req.body)
   .then(response => {

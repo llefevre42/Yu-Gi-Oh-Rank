@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
-import BackGround from '../../components/BackGround';
 import styles from '../../Styles/globalStyle'
 import HeadTab from './../../components/HeadTab'
 import CellTab from './../../components/CellTab'
@@ -22,7 +21,7 @@ export default function AllTeam() {
          lastEvent[index].date_event = (date.getDate() + ' / ' + (date.getMonth() + 1) + ' / ' + date.getFullYear())
      })*/
     return (
-        <BackGround>
+        <div>
             <div style={{ fontSize: 30, textAlign: "center", fontFamily: "Ariq", color: "#0d8d40", marginTop: 30, marginBottom: 30 }}>
                 Liste des Equipe en France :
                 </div>
@@ -60,6 +59,6 @@ export default function AllTeam() {
                     </Link>
                 ))}
             </div>
-        </BackGround>
+        </div>
     )
 }

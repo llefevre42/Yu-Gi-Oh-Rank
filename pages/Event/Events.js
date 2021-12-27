@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import BackGround from '../../components/BackGround';
 import styles from '../../Styles/globalStyle'
 import HeadTab from './../../components/HeadTab'
 import CellTab from './../../components/CellTab'
@@ -41,7 +40,7 @@ export default function Events() {
     const jour = date.getDate()
     const mois = (date.getMonth() + 1)
     return (
-        <BackGround>
+        <div>
             <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_metro }}>
                 {events.nom_event} -  {events.rating_event}
             </div>
@@ -164,6 +163,6 @@ export default function Events() {
                     ))}
                 </div>
             </div> : null}
-        </BackGround>
+        </div>
     )
 }

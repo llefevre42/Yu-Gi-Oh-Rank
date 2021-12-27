@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
 import styles from '../../Styles/globalStyle'
-import BackGround from '../../components/BackGround';
 import HeadTab from './../../components/HeadTab'
 import CellTab from './../../components/CellTab'
 
@@ -22,8 +21,8 @@ export default function AllEvent() {
         lastEvent[index].date_event = (date.getDate() + ' / ' + (date.getMonth() + 1) + ' / ' + date.getFullYear())
     })
     return (
-        <BackGround>
-            <div style={{ fontSize: 30, textAlign: "center", fontFamily: "Ariq", color: "#0d8d40", marginTop: 30, marginBottom: 30 }}>
+        <div style={{}}>
+            <div style={{ fontSize: 30, textAlign: "center", fontFamily: "Ariq", color: "#0d8d40", marginTop: 30, marginBottom: 30, }}>
                 Liste des Evenement en France :
                 </div>
             <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20 }}>
@@ -43,6 +42,6 @@ export default function AllEvent() {
                     </Link>
                 ))}
             </div>
-        </BackGround >
+        </div >
     )
 }

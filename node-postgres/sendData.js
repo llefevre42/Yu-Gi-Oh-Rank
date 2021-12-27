@@ -6,6 +6,25 @@ const pool = new Pool({
     password: 'adn59bis',
     port: 5432,
 });
+
+const sendEvent = (body) => {
+    return new Promise(function (resolve, reject) {
+
+        const { nom, lieu, rating, date, nbr, text, repart, repartTop, top, orga } = body
+        pool.query(
+            'INSERT INTO public."Evenement"(id_event, nom_event, lieu_event, date_event, orga_event, rating_event, nbr_player_event, texte_event, repart_event, top_event, repart_top_event) VALUES (nextval(\'id_event_sec\') ,$1 , $2, $3 , $4 , $5 , $6 , $7, $8, $9, $10 )', [nom, lieu, date, orga ,rating, nbr, text, repart, top ,repartTop], (error, results) => {
+                if (error) {
+                    reject(error)
+                }
+                if (results != undefined)
+                    resolve(results);
+                else
+                    resolve(results);
+            })
+
+    })
+}
+
 const sendResultat = (body) => {
     return new Promise(function (resolve, reject) {
 
@@ -59,5 +78,5 @@ const sendPoint = (body) => {
     })
 }
 module.exports = {
-    sendResultat, sendPoint, sendJoueur
+    sendResultat, sendPoint, sendJoueur, sendEvent
 }

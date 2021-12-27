@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import BackGround from '../../components/BackGround';
 import styles from '../../Styles/globalStyle'
 import HeadTab from './../../components/HeadTab'
 import CellTab from './../../components/CellTab'
@@ -42,7 +41,6 @@ export default function Player() {
     }
 
     return (
-        <BackGround>
             <div style={{ ...styles.bordure_g, borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30 }}>
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", marginRight: 30, marginLeft: 30, marginTop: 30 }}>
                     {results.photo_joueur != null ? <img src={joueur.photo_joueur}
@@ -175,6 +173,5 @@ export default function Player() {
                     ))}
                 </div>
             </div>
-        </BackGround>
     )
 }

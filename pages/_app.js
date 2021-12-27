@@ -1,10 +1,14 @@
 import Layout from '../components/Layout'
+import Header from './../components/Header'
+
 
 
 export default function MyApp({ Component, pageProps }) {
     return (
         <Layout>
-            <Component {...pageProps} />
+            <Header>
+                <Component {...pageProps} />
+            </Header>
         </Layout>
     )
 }

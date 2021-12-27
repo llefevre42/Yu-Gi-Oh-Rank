@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import BackGround from '../../components/BackGround';
 import styles from '../../Styles/globalStyle'
 import HeadTab from './../../components/HeadTab'
 import CellTab from './../../components/CellTab'
@@ -37,8 +36,7 @@ export default function EventPlayer() {
             });
     }
     return (
-        <BackGround>
-            <div style={{ ...styles.bordure_g, borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30 }}>
+            <div style={{ ...styles.bordure_g, borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30}}>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
@@ -127,6 +125,5 @@ export default function EventPlayer() {
                     />
                 </div>
             </div>
-        </BackGround>
     )
 }
