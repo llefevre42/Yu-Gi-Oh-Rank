@@ -6,7 +6,7 @@ import Arbo from './Arbo';
 
 
 export default function Logo(props) {
-    const [visible, setVisible] = useState('true');
+    const [visible, setVisible] = useState(false);
     return (
         <div style={{
             minHeight: "100vh",
@@ -32,7 +32,7 @@ export default function Logo(props) {
                 <div style={{width: '100%',  marginLeft: 20}}>
                 <Link href="/">
                     <a>
-                        <img src={'/logo.png'} style={{ marginLeft: "20vw", width: 240, height: 180, marginTop: 10, marginBottom: 20 }} />
+                        <img src={'/logo.png'} style={{ marginLeft: "30vw", width: 240, height: 180, marginTop: 10, marginBottom: 20 }} />
                     </a>
                 </Link>
                 {props.children}

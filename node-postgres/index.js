@@ -43,6 +43,17 @@ app.post('/sendpoint', (req, res) => {
   })
 })
 
+
+app.post('/sendpointglobal', (req, res) => {
+  sendData.sendPointGlobal(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
 app.post('/sendjoueur', (req, res) => {
   sendData.sendJoueur(req.body)
   .then(response => {

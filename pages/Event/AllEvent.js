@@ -22,12 +22,12 @@ export default function AllEvent() {
     })
     return (
         <div style={{}}>
-            <div style={{ fontSize: 30, textAlign: "center", fontFamily: "Ariq", color: "#0d8d40", marginTop: 30, marginBottom: 30, }}>
+            <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 30, marginBottom: 30, }}>
                 Liste des Evenement en France :
                 </div>
             <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20 }}>
                 {lastEvent.map((Event, index) => (
-                    <Link href={{
+                    <Link key={index}  href={{
                         pathname: "/Event/Events",
                         query: { event_id: Event.id_event }
                     }} >

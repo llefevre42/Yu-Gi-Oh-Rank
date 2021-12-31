@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styles from '../Styles/globalStyle'
 export default function Arbo(visible) {
     return (
-        <div style={{ ...styles.bordure_g, borderRadius: "30px", width: "15vw", height: "90vh", marginTop: 70, marginLeft: 10, marginBottom: 10 }}>
+        <div style={{ ...styles.bordure_g, position:'absolute', zIndex: 1 ,borderRadius: "30px", width: "15vw", marginTop: 70, marginLeft: 10, marginBottom: 10, backgroundColor: "#22171c"}}>
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <Link href="/Player/RankPlayer">
                     <a style={{}}>

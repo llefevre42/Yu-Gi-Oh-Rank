@@ -37,7 +37,7 @@ export default function AllPlayer() {
             </div>
             <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20 }}>
                 {players.map((player, index) => (
-                    <Link href={{
+                    <Link key={index} href={{
                         pathname: "/Event/Events",
                         query: { event_id: Event.id_event }
                     }} >

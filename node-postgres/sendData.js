@@ -27,8 +27,9 @@ const sendEvent = (body) => {
 
 const sendResultat = (body) => {
     return new Promise(function (resolve, reject) {
-
         const { event, place, deck, decklist, youtube, toped, cossy, point } = body
+console.log(event, place, deck, decklist, youtube, toped, cossy, point )
+
         pool.query(
             'INSERT INTO public."Resultat"(id_event, place, deck_joueur, img_decklist, youtube_link, toped, id_cossy, point_resultat) VALUES ($1 , $2, $3 , $4 , $5 , $6 , $7, $8 )', [event, place, deck, decklist, youtube, toped, cossy, point], (error, results) => {
                 if (error) {
@@ -77,6 +78,22 @@ const sendPoint = (body) => {
 
     })
 }
+const sendPointGlobal = (body) => {
+    return new Promise(function (resolve, reject) {
+        const { point, cossy } = body
+        pool.query(
+            'UPDATE public."Joueur" SET point_global_joueur = point_global_joueur + $1  WHERE id_cossy = $2;', [point, cossy], (error, results) => {
+                if (error) {
+                    reject(error)
+                }
+                if (results != undefined)
+                    resolve(results);
+                else
+                    resolve(results);
+            })
+
+    })
+}
 module.exports = {
-    sendResultat, sendPoint, sendJoueur, sendEvent
+    sendResultat, sendPoint, sendJoueur, sendEvent, sendPointGlobal
 }

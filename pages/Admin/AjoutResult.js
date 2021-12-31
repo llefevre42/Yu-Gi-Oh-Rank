@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
-import isPositiveOrBeZero from '../../reserveFonction/isPositiveOrBeZero';
+import AlgoPoint from '../../reserveFonction/AlgoPoint'
 
 function ajoutPoint(point, cossy) {
     fetch('http://localhost:3001/sendpoint', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ point, cossy })
+    })
+    fetch('http://localhost:3001/sendpointglobal', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -17,7 +24,7 @@ export default function AjoutResult() {
     const [place, setPlace] = useState('');
     const [deck, setDeck] = useState('');
     const [decklist, setDecklist] = useState('');
-    const [toped, setToped] = useState('');
+    const [toped, setToped] = useState(0);
     const [youtube, setYoutube] = useState('');
     const [cossy, setCossy] = useState('');
     const [events, getOneEvents] = useState([]);
@@ -38,7 +45,7 @@ export default function AjoutResult() {
 
 
     function sendResultat(event, place, deck, decklist, youtube, toped, cossy) {
-        let point = ((Math.trunc(events.nbr_player_event / 8) - (place - 1)) * 1 + isPositiveOrBeZero((events.top_event / 2) - (toped - 1)) * 1)
+        let point = AlgoPoint(events.nbr_player_event, place, toped, events.top_event )
         fetch('http://localhost:3001/sendresult', {
             method: 'POST',
             headers: {
@@ -48,6 +55,7 @@ export default function AjoutResult() {
         })
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 if (point > 0)
                     ajoutPoint(point, cossy)
             });

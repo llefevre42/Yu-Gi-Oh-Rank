@@ -5,23 +5,40 @@ import styles from '../../Styles/globalStyle'
 import HeadTab from './../../components/HeadTab'
 import CellTab from './../../components/CellTab'
 
+
+
 export default function RankPlayer() {
     const router = useRouter()
     const [players, getAllPlayer] = useState([]);
+    const [teams, getAllTeam] = useState([]);
     useEffect(() => {
         getAllPlayers();
+        getAllTeams()
     }, []);
     function getAllPlayers() {
         fetch('http://localhost:3001/getallplayer')
             .then(response => response.json())
             .then(data => {
-                getAllPlayer(data);
+                getAllPlayer(data.sort(function (a, b) {return b.point_joueur - a.point_joueur}))
             });
     }
 
+    function getAllTeams() {
+        fetch('http://localhost:3001/getallteam')
+            .then(response => response.json())
+            .then(data => {
+                getAllTeam(data);
+            });
+    }
+
+   function teamName(team){
+    let tmp = teams.filter(function(data){ return data.id_team == team})
+    if(tmp[0])
+        return(tmp[0].nom_team)
+    return('')
+}
     return (
         <div>
-
             <div style={{ fontSize: 40, textAlign: "center", color: "#efefef" }}>
                 Rank pour la saison actuel
                     </div>
@@ -51,10 +68,10 @@ export default function RankPlayer() {
             }}>
                 {players.map((player, index) => (
                     <Link key={index} href="/Event/EventPlayer">
-                        <div style={{...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null)}}>
+                        <div style={{ ...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null) }}>
                             <CellTab text={index + 1} size={"15%"}></CellTab>
                             <CellTab text={player.nom_joueur + ' ' + player.prenom_joueur} size={"30%"}></CellTab>
-                            <CellTab text={player.team_joueur} size={"30%"}></CellTab>
+                            <CellTab text={teamName(player.id_team )} size={"30%"}></CellTab>
                             <CellTab text={player.point_joueur} size={"15%"}></CellTab>
                         </div>
                     </Link>

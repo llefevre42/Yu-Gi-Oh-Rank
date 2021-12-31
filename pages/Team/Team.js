@@ -81,7 +81,7 @@ export default function Team() {
             </div>
             <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20, overflow: "hidden", marginTop: 20, marginLeft: 20, marginBottom: 20 }}>
                 {players.map((player, index) => (
-                    <Link href={{
+                    <Link key={index} href={{
                         pathname: "/Player/Player",
                         query: { id_cossy: player.id_cossy }
                     }} >
@@ -94,7 +94,7 @@ export default function Team() {
 
                                 <CellTab text={player.prenom_joueur + ' ' + player.nom_joueur} size={"30%"}></CellTab>
                                 <CellTab text={player.point_joueur} size={"15%"}></CellTab>
-                                <CellTab text={"36"} size={"15%"}></CellTab>
+                                <CellTab text={player.point_joueur} size={"15%"}></CellTab>
                             </div>
                         </a>
                     </Link>

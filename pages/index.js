@@ -1,8 +1,6 @@
 
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
-import Arbo from './../components/Arbo'
-import Header from './../components/Header'
 import SliderHomePage from './../components/SliderHomePage'
 
 import styles from '../Styles/globalStyle'
