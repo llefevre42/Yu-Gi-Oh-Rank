@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
 import SliderHomePage from './../components/SliderHomePage'
-
+import CellTab from './../components/CellTab'
 import styles from '../Styles/globalStyle'
 
 export default function Home() {
@@ -55,29 +55,15 @@ export default function Home() {
                 pathname: "/Event/Events",
                 query: { event_id: Event.id_event },
               }}>
-                <a style={{ color: "inherit", textDecoration: "inherit" }}>
+                <a>
                   <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-around",
+                    ...styles.tab_medium_element,
                     backgroundColor: (index % 2 ? "black" : null),
-                    minHeight: 50,
-                    alignItems: "center"
                   }}>
-                    <div style={{ textAlign: "center", fontSize: 25, width: "20%", ...styles.titre_metro }}>
-                      {(new Date(Event.date_event)).getDate()} /  {(new Date(Event.date_event)).getMonth() + 1}
-                    </div>
-                    <div style={{ textAlign: "center", fontSize: 25, width: "35%", ...styles.titre_metro }}>
-                      {Event.lieu_event.substr(0, 15)}
-                    </div>
-                    <div style={{ textAlign: "center", fontSize: 25, width: "35%", ...styles.titre_metro }}>
-
-                      {Event.nom_event.substr(0, 15)}
-
-                    </div>
-                    <div style={{ textAlign: "center", fontSize: 25, width: "5%", ...styles.titre_metro }}>
-                      {Event.rating_event}
-                    </div>
+                    <CellTab size={"20%"}>{(new Date(Event.date_event)).getDate()} /  {(new Date(Event.date_event)).getMonth() + 1}</CellTab>
+                    <CellTab size={"35%"}>{Event.lieu_event.substr(0, 15)}</CellTab>
+                    <CellTab size={"35%"}>{Event.nom_event.substr(0, 15)}</CellTab>
+                    <CellTab size={"5%"}>{Event.rating_event}</CellTab>
                   </div>
                 </a>
               </Link>
@@ -94,25 +80,15 @@ export default function Home() {
                 pathname: "/Event/Events",
                 query: { event_id: Event.id_event }
               }} >
-                <a style={{ color: "inherit", textDecoration: "inherit" }}>
+                <a>
                   <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-around",
-                    alignItems: "center",
+                    ...styles.tab_medium_element,
                     backgroundColor: (index % 2 ? "black" : null),
-                    minHeight: 50,
-                    alignItems: "center"
+
                   }}>
-                    <div style={{ textAlign: "center", fontSize: 25, width: "20%", ...styles.titre_metro }}>
-                      {(new Date(Event.date_event)).getDate()} /  {(new Date(Event.date_event)).getMonth() + 1}
-                    </div>
-                    <div style={{ textAlign: "center", fontSize: 25, width: "40%", ...styles.titre_metro }}>
-                      {Event.lieu_event}
-                    </div>
-                    <div style={{ textAlign: "center", fontSize: 25, width: "40%", ...styles.titre_metro }} >
-                      {Event.nom_event}
-                    </div>
+                    <CellTab size={"20%"}>{(new Date(Event.date_event)).getDate()} /  {(new Date(Event.date_event)).getMonth() + 1}</CellTab>
+                    <CellTab size={"40%"}>{Event.lieu_event}</CellTab>
+                    <CellTab size={"40%"}>{Event.nom_event}</CellTab>
                   </div>
                 </a>
               </Link>

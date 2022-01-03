@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
-import HeadTab from './../../components/HeadTab'
 import CellTab from './../../components/CellTab'
 
 export default function Player() {
@@ -88,22 +87,17 @@ export default function Player() {
 
             </div>
             <div style={{
-                display: "flex",
-                flexDirection: "row",
+                ...styles.tab_medium_element,
                 marginTop: 20,
                 marginLeft: 10,
                 marginRight: 10,
-                justifyContent: "space-around",
-                alignItems: "center",
-                minHeight: 50,
-                alignItems: "center"
             }}>
-                <HeadTab text={"Date :"} size={"15%"}></HeadTab>
-                <HeadTab text={"Place :"} size={"10%"}></HeadTab>
-                <HeadTab text={"Event :"} size={"25%"}></HeadTab>
-                <HeadTab text={"Deck :"} size={"15%"}></HeadTab>
-                <HeadTab text={"Rank :"} size={"10%"}></HeadTab>
-                <HeadTab text={"Point :"} size={"15%"}></HeadTab>
+                  <CellTab head size={"15%"}>Date :</CellTab>
+                  <CellTab head size={"10%"}>Place :</CellTab>
+                  <CellTab head size={"25%"}>Event :</CellTab>
+                  <CellTab head size={"15%"}>Deck :</CellTab>
+                  <CellTab head size={"10%"}>Rank :</CellTab>
+                  <CellTab head size={"15%"}>Point :</CellTab>
 
             </div>
             <div style={{
@@ -122,8 +116,8 @@ export default function Player() {
                         ...styles.tab_medium_element,
                         backgroundColor: (index % 2 ? "black" : null)
                     }}>
-                        <CellTab text={(new Date(result.date_event)).getDate() + '/' + ((new Date(result.date_event)).getMonth() + 1)} size={"15%"}></CellTab>
-                        <CellTab text={result.place} size={"10%"}></CellTab>
+                        <CellTab size={"15%"}>{(new Date(result.date_event)).getDate() + '/' + ((new Date(result.date_event)).getMonth() + 1)}</CellTab>
+                        <CellTab size={"10%"}>{result.place}</CellTab>
                         <div style={{ ...styles.titre_metro, textAlign: "center", fontWeight: "bold", color: "#eaeaea", fontSize: 25, width: "25%" }}>
                             <Link key={index} href={{
                                 pathname: "/Event/Events",
@@ -133,11 +127,10 @@ export default function Player() {
                                     {result.nom_event}
                                 </a>
                             </Link>
-
                         </div>
-                        <CellTab text={result.deck_joueur} size={"15%"}></CellTab>
-                        <CellTab text={result.rating_event} size={"10%"}></CellTab>
-                        <CellTab text={result.point_resultat} size={"15%"}></CellTab>
+                        <CellTab size={"15%"}>{result.deck_joueur}</CellTab>
+                        <CellTab size={"10%"}>{result.rating_event}</CellTab>
+                        <CellTab size={"15%"}>{result.point_resultat}</CellTab>
                     </div>
 
                 ))}

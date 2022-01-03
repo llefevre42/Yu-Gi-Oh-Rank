@@ -19,7 +19,6 @@ const styles = {
         justifyContent: "space-around",
         alignItems: "center",
         minHeight: 50,
-        alignItems: "center",
         overflow: 'hidden',
 
     }

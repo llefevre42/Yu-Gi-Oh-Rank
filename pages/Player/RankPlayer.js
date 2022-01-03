@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
-import HeadTab from './../../components/HeadTab'
 import CellTab from './../../components/CellTab'
 
 
@@ -51,10 +50,11 @@ export default function RankPlayer() {
                 justifyContent: "space-around",
                 alignItems: "center",
             }}>
-                <HeadTab text={"Rank :"} size={"15%"}></HeadTab>
-                <HeadTab text={"Joueur :"} size={"30%"}></HeadTab>
-                <HeadTab text={"Team :"} size={"30%"}></HeadTab>
-                <HeadTab text={"Point :"} size={"15%"}></HeadTab>
+                   <CellTab head size={"15%"}>Rank :</CellTab>
+                   <CellTab head size={"30%"}>Joueur :</CellTab>
+                   <CellTab head size={"30%"}>Team :</CellTab>
+                   <CellTab head size={"15%"}>Point :</CellTab>
+               
             </div>
             <div style={{
                 ...styles.bordure_g,
@@ -69,10 +69,10 @@ export default function RankPlayer() {
                 {players.map((player, index) => (
                     <Link key={index} href="/Event/EventPlayer">
                         <div style={{ ...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null) }}>
-                            <CellTab text={index + 1} size={"15%"}></CellTab>
-                            <CellTab text={player.nom_joueur + ' ' + player.prenom_joueur} size={"30%"}></CellTab>
-                            <CellTab text={teamName(player.id_team )} size={"30%"}></CellTab>
-                            <CellTab text={player.point_joueur} size={"15%"}></CellTab>
+                            <CellTab size={"15%"}>{index + 1} </CellTab>
+                            <CellTab size={"30%"}>{player.nom_joueur + ' ' + player.prenom_joueur}</CellTab>
+                            <CellTab size={"30%"}>{teamName(player.id_team )}</CellTab>
+                            <CellTab size={"15%"}>{player.point_joueur}</CellTab>
                         </div>
                     </Link>
                 ))}

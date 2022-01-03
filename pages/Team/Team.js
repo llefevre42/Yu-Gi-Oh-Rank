@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
-import HeadTab from './../../components/HeadTab'
 import CellTab from './../../components/CellTab'
 
 export default function Team() {
@@ -66,18 +65,14 @@ export default function Team() {
                 </div>
             </div>
             <div style={{
-                display: "flex",
-                flexDirection: "row",
+              ...styles.tab_medium_element,
                 marginTop: 20,
-                marginLeft: 20,
                 marginRight: 20,
-                justifyContent: "space-around",
-                alignItems: "center",
             }}>
-                <HeadTab text={"Photo :"} size={"10%"}></HeadTab>
-                <HeadTab text={"Joueur :"} size={"30%"}></HeadTab>
-                <HeadTab text={"Point Global :"} size={"15%"}></HeadTab>
-                <HeadTab text={"Point Saison :"} size={"15%"}></HeadTab>
+                <CellTab head size={"10%"}>Photo :</CellTab>
+                <CellTab head size={"30%"}>Joueur :</CellTab>
+                <CellTab head size={"15%"}>Point Global :</CellTab>
+                <CellTab head size={"15%"}>Point Saison :</CellTab>
             </div>
             <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20, overflow: "hidden", marginTop: 20, marginLeft: 20, marginBottom: 20 }}>
                 {players.map((player, index) => (
@@ -92,9 +87,9 @@ export default function Team() {
                                     : <img src={"./../Vagabond.jpeg"}
                                         style={{ width: 100, height: 150, marginTop: 10, ...styles.bordure_g }} />}
 
-                                <CellTab text={player.prenom_joueur + ' ' + player.nom_joueur} size={"30%"}></CellTab>
-                                <CellTab text={player.point_joueur} size={"15%"}></CellTab>
-                                <CellTab text={player.point_joueur} size={"15%"}></CellTab>
+                                <CellTab size={"30%"}>{player.prenom_joueur + ' ' + player.nom_joueur}</CellTab>
+                                <CellTab size={"15%"}>{player.point_joueur}</CellTab>
+                                <CellTab size={"15%"}>{player.point_joueur}</CellTab>
                             </div>
                         </a>
                     </Link>

@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
-import HeadTab from './../../components/HeadTab'
-import CellTab from './../../components/CellTab'
 
 export default function EventPlayer() {
     const router = useRouter()

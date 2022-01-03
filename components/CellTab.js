@@ -1,11 +1,15 @@
-import styles from '../Styles/globalStyle'
+import styled from 'styled-components';
 
-function CellTab(props) {
-    return (
-        <div style={{...styles.titre_metro, fontSize: 25, textAlign: "center", color: "#efefef", fontSize: 25, width: props.size, marginTop: 10, marginBottom: 10  }}>
-            {props.text}
-        </div>
-    )
-}
+const CellTab = styled.div`
+font-family: "Metropolis";
+font-weight: bold;
+color: #efefef;
+width: ${props => props.size || 100}; 
+font-size: ${props => props.head ? "23px" : "25px" }; 
+text-align: center; 
+margin-top: 10px;
+margin-bottom: 10px; 
+`;
 
-export default CellTab
+
+export default CellTab 
