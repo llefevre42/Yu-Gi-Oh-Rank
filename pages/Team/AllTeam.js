@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../Styles/globalStyle'
 import CellTab from './../../components/CellTab'
 
+
 export default function AllTeam() {
     const [teams, getAllTeams] = useState([]);
     useEffect(() => {
@@ -17,11 +18,11 @@ export default function AllTeam() {
     }
     return (
         <div>
-            <div style={{ fontSize: 30, textAlign: "center", fontFamily: "Ariq", color: "#0d8d40", marginTop: 30, marginBottom: 30 }}>
+            <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 30, marginBottom: 30 }}>
                 Liste des Equipe en France :
                 </div>
             <div style={{
-            ...styles.tab_medium_element,
+                ...styles.tab_medium_element,
                 marginTop: 10,
                 marginRight: 20,
                 marginBottom: 20,
@@ -38,11 +39,14 @@ export default function AllTeam() {
                         query: { id_team: team.id_team }
                     }} >
                         <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                            <div style={{...styles.tab_medium_element, backgroundColor: team.couleur_team}}>
+                            <div style={{ ...styles.tab_medium_element, backgroundColor: team.couleur_team }}>
                                 <CellTab size={"10%"}>{index + 1}</CellTab>
                                 <CellTab size={"30%"}>{team.nom_team}</CellTab>
                                 <CellTab size={"15%"}>{team.total_point_team}</CellTab>
-                                <img src={team.logo_team} style={{ width: 100, height: 100 }}></img>
+                                {team.logo_team != null && team.logo_team != "" && team.logo_team != 'undefined' ?
+                                    <img src={team.logo_team} style={{ width: 100, height: 130, marginTop: 10, marginBottom: 10}} />
+                                    : <img src={"./../Vagabond.jpeg"}
+                                        style={{ width: 100, height: 130, marginTop: 10, marginBottom: 10 }} />}
                             </div>
                         </a>
                     </Link>

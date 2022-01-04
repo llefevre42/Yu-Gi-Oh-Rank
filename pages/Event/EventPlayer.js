@@ -35,26 +35,26 @@ export default function EventPlayer() {
     }
 
     return (
-        <div style={{ ...styles.bordure_g, borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30 }}>
+        <div style={{ ...styles.bordure_g, borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30, marginBottom: 10 }}>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-around", marginBottom: 10
             }}>
                 <div>
-                    <div style={{ display: "flex", flexDirection: "row" }}>
+                    <div style={{ display: "flex", flexDirection: "row", margin: 10 }}>
                         <Link href={{
                             pathname: "/Player/Player",
                             query: { id_cossy: results.id_cossy },
                         }}>
-                            {results.photo_joueur != null && results.photo_joueur != '' && results.photo_joueur != 'undefined'? <img src={results.photo_joueur}
+                            {results.photo_joueur != null && results.photo_joueur != '' && results.photo_joueur != 'undefined' ? <img src={results.photo_joueur}
                                 style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />
                                 : <img src={"./../Vagabond.jpeg"}
                                     style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />}
                         </Link>
-                        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around", marginTop: 10, marginLeft: 15 }}>
+                        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around", margin: 10}}>
                             <div>
-                                <div style={{ ...styles.titre_metro, fontSize: 23, textAlign: "left", color: "#efefef" }}>
+                                <div style={{ ...styles.titre_metro, fontSize: 23, textAlign: "left"}}>
                                     <Link href={{
                                         pathname: "/Player/Player",
                                         query: { id_cossy: results.id_cossy },
@@ -62,20 +62,20 @@ export default function EventPlayer() {
                                         <a>{results.prenom_joueur} {results.nom_joueur}</a>
                                     </Link>
                                 </div>
-                                <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "left", color: "#efefef" }}>
+                                <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "left" }}>
                                     {results.id_cossy}
                                 </div>
-                                <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "left", color: "#efefef" }}>
+                                <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "left" }}>
                                     Deck : {results.deck_joueur != '' && results.deck_joueur != 'undefined' ? results.deck_joueur : "inconnu"}
                                 </div>
                             </div>
                             {results.toped > 0 ?
 
-                                <div style={{ ...styles.titre_metro, fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                <div style={{ ...styles.titre_metro, fontSize: 40, textAlign: "left",  textAlign: "center" }}>
                                     {results.toped == 1 ? results.toped + 'er' : results.toped + 'eme'}
                                 </div>
                                 :
-                                <div style={{ ...styles.titre_metro, fontSize: 40, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                <div style={{ ...styles.titre_metro, fontSize: 40, textAlign: "left", textAlign: "center" }}>
                                     {results.place == 1 ? results.place + 'er' : results.place + 'eme'}
                                 </div>
                             }
@@ -87,16 +87,16 @@ export default function EventPlayer() {
                                     pathname: "/Event/Events",
                                     query: { event_id: results.id_event },
                                 }}>
-                                    <a style={{ color: "inherit", textDecoration: "inherit" }}>
-                                        <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                    <a>
+                                        <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "center" }}>
                                             <div>
                                                 {events.nom_event}
                                             </div>
                                         </div>
-                                        <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                        <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "center" }}>
                                             {(new Date(events.date_event)).getDate()} /  {(new Date(events.date_event)).getMonth() + 1}
                                         </div>
-                                        <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "left", color: "#efefef", textAlign: "center" }}>
+                                        <div style={{ ...styles.titre_metro, fontSize: 20,textAlign: "center" }}>
                                             {events.lieu_event}
                                         </div>
                                     </a>
@@ -105,7 +105,7 @@ export default function EventPlayer() {
                         </div>
                     </div>
                     {results.youtube_link && results.youtube_link != '' && results.youtube_link != 'undefined' ?
-                        <iframe style={{ width: "100%", height: "60%", border: "2px solid", borderColor: '#0d8d40', marginTop: 10 }}
+                        <iframe style={{ width: "100%", height: "60%", border: "2px solid", borderColor: '#0d8d40', marginTop :10, marginLeft: 10, minHeight: 400 }}
                             id="player"
                             src={results.youtube_link}
                             frameBorder='0'
@@ -115,11 +115,12 @@ export default function EventPlayer() {
                         /> : null}
                 </div>
                 {results.img_decklist && results.img_decklist != '' && results.img_decklist != 'undefined' ?
-
-                    <img style={{ width: "50%", height: "60vh", border: "2px solid", borderColor: '#0d8d40', marginTop: 10, marginBottom: 10 }}
-                        src={results.img_decklist}
-                        alt="new"
-                    />
+                    <Link href={results.img_decklist} passHref={true} >
+                        <img style={{ width: "45%", border: "2px solid", borderColor: '#0d8d40', margin: 10}}
+                            src={results.img_decklist}
+                            alt="new"
+                        />
+                    </Link>
                     : null}
             </div>
         </div>

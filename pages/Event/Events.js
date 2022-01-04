@@ -51,13 +51,26 @@ export default function Events() {
                 Top Cut : {events.top_event}
             </div> : null}
 
-            {events.texte_event ? <div style={{ fontSize: 25, textAlign: "center", color: "#efefef", ...styles.titre_metro, marginTop: 20 }}>
-                {events.texte_event}
-            </div> : null}
+            {
+                events.texte_event ? <div style={{ fontSize: 25, textAlign: "center", color: "#efefef", ...styles.titre_metro, marginTop: 20 }}>
+                    {events.texte_event}
+                </div> : null
+            }
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
-                {events.repart_event ? <img src={events.repart_event} style={{ width: '47%', marginTop: 10, ...styles.bordure_g }} /> : null}
+                {
+                    events.repart_event ?
+                        <Link href={events.repart_event} passHref={true} >
+                                <img src={events.repart_event} style={{ width: '47%', marginTop: 10, ...styles.bordure_g }} />
+                        </Link>
+                        : null}
                 <div style={{ marginRight: 5, marginLeft: 5 }}></div>
-                {events.repart_top_event ? <img src={events.repart_top_event} style={{ width: '47%', marginTop: 10, ...styles.bordure_g }} /> : null}
+                {
+                    events.repart_top_event ?
+                        <Link href={events.repart_top_event} passHref={true}>
+                                <img src={events.repart_top_event} style={{ width: '47%', marginTop: 10, ...styles.bordure_g }} />
+                        </Link>
+                        : null
+                }
             </div>
             {results && events.top_event > 0 ?
                 <div>
