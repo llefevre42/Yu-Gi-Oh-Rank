@@ -8,10 +8,14 @@ export default function Team() {
     const router = useRouter()
     const [team, getOneTeams] = useState([]);
     const [players, getAllPlayerTeams] = useState([]);
+    const [teams, getAllTeams] = useState([]);
+    const [playersInTeam, getAllPlayers] = useState([]);
     useEffect(() => {
         if (!router.isReady) return;
         getOneTeam(router.query.id_team);
         getAllPlayerTeam(router.query.id_team);
+        getAllTeam();
+        getAllPlayerInTeam();
     }, []);
     function getOneTeam(id) {
         fetch('http://localhost:3001/getoneteam/' + id, {
@@ -29,7 +33,31 @@ export default function Team() {
                 getAllPlayerTeams(data);
             });
     }
-
+    function getAllTeam() {
+        fetch('http://localhost:3001/getallteam')
+            .then(response => response.json())
+            .then(data => {
+                getAllTeams(data);
+            });
+    }
+    function getAllPlayerInTeam() {
+        fetch('http://localhost:3001/getallplayerinteam')
+            .then(response => response.json())
+            .then(data => {
+                getAllPlayers(data);
+            });
+    }
+    console.log(teams)
+    teams.map((team, index) => {
+        playersInTeam.map((player, index2) => {
+            console.log(team.nom_team, player.prenom_joueur,)
+            if (player.id_team == team.id_team) {
+                teams[index].total_point_team += player.point_joueur
+            }
+        })
+    })
+ let point = teams.find(element => element.id_team == team.id_team)
+ let rank = 0
 
     return (
         <div style={{ ...styles.bordure_g, borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30, marginBottom: 20 }}>
@@ -47,12 +75,12 @@ export default function Team() {
                                 Date de création : {team.crea_team}
                             </div>
                             <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
-                                Rank global : {team.performance}
+                                Rank global : {rank}
                             </div>
                         </div>
                         <div>
                             <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
-                                Score total : {team.performance}
+                                Score total : {point}
                             </div>
                             <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
                                 Nombre de membre : {players.length}
@@ -82,7 +110,7 @@ export default function Team() {
                     }} >
                         <a style={{ color: "inherit", textDecoration: "inherit" }}>
                             <div style={{ ...styles.tab_medium_element, backgroundColor: team.couleur_team }}>
-                                {player.photo_joueur != null ? <img src={results.photo_joueur}
+                                {player.photo_joueur != null ? <img src={player.photo_joueur}
                                     style={{ width: 100, height: 150, marginTop: 10, ...styles.bordure_g }} />
                                     : <img src={"./../Vagabond.jpeg"}
                                         style={{ width: 100, height: 150, marginTop: 10, ...styles.bordure_g }} />}

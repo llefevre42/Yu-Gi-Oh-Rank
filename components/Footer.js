@@ -7,6 +7,7 @@ import {
     FooterLink,
     Heading,
 } from "../Styles/FooterStyles";
+import packageJson from '/package.json';
 
 function Footer() {
     return (
@@ -16,9 +17,10 @@ function Footer() {
             width: '100%',
         }}>
             <div style={{ borderBottom: "3px solid", borderBottomColor: "#0d8d40", width: "90%", margin: 'auto' }}></div>
-            <div style={{display:'flex', flexDirection: "row", justifyContent: "space-around", }}>
+            <div style={{ display: 'flex', flexDirection: "row", justifyContent: "space-around", }}>
                 <FooterLink href="#">Mention legal</FooterLink>
                 <FooterLink href="#">Contact</FooterLink>
+                <FooterLink href="#">{packageJson.version}</FooterLink>
             </div>
         </div>
 

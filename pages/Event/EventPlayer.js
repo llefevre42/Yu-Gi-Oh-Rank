@@ -59,7 +59,9 @@ export default function EventPlayer() {
                                         pathname: "/Player/Player",
                                         query: { id_cossy: results.id_cossy },
                                     }}>
-                                        <a>{results.prenom_joueur} {results.nom_joueur}</a>
+                                        <a>
+                                            {results.prenom_joueur} {results.nom_joueur}
+                                        </a>
                                     </Link>
                                 </div>
                                 <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "left" }}>

@@ -21,10 +21,24 @@ const getOneEvent = (id) => {
 
   })
 }
+const getAllPlayerInTeam = () => {
+  return new Promise(function (resolve, reject) {
+    pool.query('SELECT * FROM public."Joueur" where id_team is not null', (error, results) => {
+      if (error) {
+        reject(error)
+      }
+      if (results != undefined)
+        resolve(results.rows);
+      else
+        resolve(results);
+    })
+  })
+}
+
 
 const getOneJoueur = (id) => {
   return new Promise(function (resolve, reject) {
-    pool.query('SELECT * FROM public."Joueur" natural join public."Team" where id_cossy = $1 ', [id], (error, results) => {
+    pool.query('SELECT * FROM public."Joueur" as J left join public."Team" as T on T.id_team = J.id_team where id_cossy = $1 ', [id], (error, results) => {
       if (error) {
         reject(error)
       }
@@ -197,6 +211,6 @@ module.exports = {
   getOneJoueur,
   getJoueurResultat,
   getOneJoueurResultat,
-  getOneTeam
-  
+  getOneTeam,
+  getAllPlayerInTeam
 }

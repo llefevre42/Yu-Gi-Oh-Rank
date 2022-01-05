@@ -144,6 +144,16 @@ app.get('/getallplayerteam/:id', (req, res) => {
   })
 })
 
+app.get('/getallplayerinteam', (req, res) => {
+  getData.getAllPlayerInTeam()
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
 app.get('/getallplayer', (req, res) => {
   getData.getAllPlayer()
   .then(response => {
@@ -193,8 +203,6 @@ app.get('/getnextevent', (req, res) => {
     res.status(500).send(error);
   })
 })
-
-
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)

@@ -4,23 +4,15 @@ import React, { useState, useEffect } from 'react';
 import SliderHomePage from './../components/SliderHomePage'
 import CellTab from './../components/CellTab'
 import styles from '../Styles/globalStyle'
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 export default function Home() {
-  const [events, getAllEvents] = useState([]);
   const [lastEvent, getLastEvents] = useState([]);
   const [nextEvent, getNextEvents] = useState([]);
   useEffect(() => {
-    getAllEvent();
     getLastEvent();
     getNextEvent();
   }, []);
-  function getAllEvent() {
-    fetch('http://localhost:3001/getallevent')
-      .then(response => response.json())
-      .then(data => {
-        getAllEvents(data);
-      });
-  }
   function getLastEvent() {
     fetch('http://localhost:3001/getlastevent')
       .then(response => response.json())
@@ -84,7 +76,6 @@ export default function Home() {
                   <div style={{
                     ...styles.tab_medium_element,
                     backgroundColor: (index % 2 ? "black" : null),
-
                   }}>
                     <CellTab size={"20%"}>{(new Date(Event.date_event)).getDate()} /  {(new Date(Event.date_event)).getMonth() + 1}</CellTab>
                     <CellTab size={"40%"}>{Event.lieu_event}</CellTab>

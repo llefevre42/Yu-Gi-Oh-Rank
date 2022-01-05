@@ -33,6 +33,7 @@ export default function Player() {
                 getJoueurResults(data);
             });
     }
+   
     return (
         <div style={{
             ...styles.bordure_g,
@@ -51,10 +52,9 @@ export default function Player() {
                 marginLeft: 30,
                 marginTop: 30
             }}>
-                {results.photo_joueur != null && results.photo_joueur != '' && results.photo_joueur != 'undefined'   ? <img src={joueur.photo_joueur}
-                    style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />
-                    : <img src={"./../Vagabond.jpeg"}
-                        style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />}
+                {(joueur.photo_joueur != null && joueur.photo_joueur != '' && joueur.photo_joueur != 'undefined') ?
+                    <img src={joueur.photo_joueur} style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />
+                    : <img src={"./../Vagabond.jpeg"} style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />}
                 <div style={{ display: "flex", flexDirection: "column", justifyContent: 'space-around' }}>
                     <div>
                         <div style={{ ...styles.titre_metro, fontSize: 23, textAlign: "left", marginTop: 0, marginBottom: 0, color: "#efefef", textAlign: "center" }}>
@@ -92,12 +92,12 @@ export default function Player() {
                 marginLeft: 10,
                 marginRight: 10,
             }}>
-                  <CellTab head size={"15%"}>Date :</CellTab>
-                  <CellTab head size={"10%"}>Place :</CellTab>
-                  <CellTab head size={"25%"}>Event :</CellTab>
-                  <CellTab head size={"15%"}>Deck :</CellTab>
-                  <CellTab head size={"10%"}>Rank :</CellTab>
-                  <CellTab head size={"15%"}>Point :</CellTab>
+                <CellTab head size={"15%"}>Date :</CellTab>
+                <CellTab head size={"10%"}>Place :</CellTab>
+                <CellTab head size={"25%"}>Event :</CellTab>
+                <CellTab head size={"15%"}>Deck :</CellTab>
+                <CellTab head size={"10%"}>Rank :</CellTab>
+                <CellTab head size={"15%"}>Point :</CellTab>
 
             </div>
             <div style={{
@@ -107,7 +107,6 @@ export default function Player() {
                 marginLeft: 20,
                 marginRight: 20,
                 borderRadius: "30px",
-                marginTop: 20,
                 marginBottom: 10,
                 overflow: 'hidden'
             }}>

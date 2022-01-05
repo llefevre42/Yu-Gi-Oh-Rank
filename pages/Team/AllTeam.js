@@ -6,8 +6,11 @@ import CellTab from './../../components/CellTab'
 
 export default function AllTeam() {
     const [teams, getAllTeams] = useState([]);
+    const [players, getAllPlayers] = useState([]);
     useEffect(() => {
         getAllTeam();
+        getAllPlayerInTeam();
+
     }, []);
     function getAllTeam() {
         fetch('http://localhost:3001/getallteam')
@@ -16,6 +19,22 @@ export default function AllTeam() {
                 getAllTeams(data);
             });
     }
+    function getAllPlayerInTeam() {
+        fetch('http://localhost:3001/getallplayerinteam')
+            .then(response => response.json())
+            .then(data => {
+                getAllPlayers(data);
+            });
+    }
+    console.log(teams)
+    teams.map((team, index) => {
+        players.map((player, index2) => {
+            console.log(team.nom_team, player.prenom_joueur,)
+            if (player.id_team == team.id_team) {
+                teams[index].total_point_team += player.point_joueur
+            }
+        })
+    })
     return (
         <div>
             <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 30, marginBottom: 30 }}>
@@ -32,8 +51,10 @@ export default function AllTeam() {
                 <CellTab head size={"15%"}>Point :</CellTab>
                 <CellTab head size={"8%"}>Logo :</CellTab>
             </div>
-            <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20, overflow: "hidden" }}>
-                {teams.map((team, index) => (
+            <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20, marginBottom: 10, overflow: "hidden" }}>
+                {teams.sort(function (a, b) {
+                    return b.total_point_team - a.total_point_team;
+                }).map((team, index) => (
                     <Link key={index} href={{
                         pathname: "/Team/Team",
                         query: { id_team: team.id_team }
@@ -44,7 +65,7 @@ export default function AllTeam() {
                                 <CellTab size={"30%"}>{team.nom_team}</CellTab>
                                 <CellTab size={"15%"}>{team.total_point_team}</CellTab>
                                 {team.logo_team != null && team.logo_team != "" && team.logo_team != 'undefined' ?
-                                    <img src={team.logo_team} style={{ width: 100, height: 130, marginTop: 10, marginBottom: 10}} />
+                                    <img src={team.logo_team} style={{ width: 100, height: 130, marginTop: 10, marginBottom: 10 }} />
                                     : <img src={"./../Vagabond.jpeg"}
                                         style={{ width: 100, height: 130, marginTop: 10, marginBottom: 10 }} />}
                             </div>

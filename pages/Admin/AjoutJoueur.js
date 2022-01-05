@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 export default function AjoutJoueur() {
-    const [nom, setNom] = useState('');
-    const [prenom, setPrenom] = useState('');
-    const [team, setTeam] = useState(-1);
-    const [photo, setPhoto] = useState('');
-    const [cossy, setCossy] = useState('');
+    const [nom, setNom] = useState(null);
+    const [prenom, setPrenom] = useState(null);
+    const [team, setTeam] = useState(null);
+    const [photo, setPhoto] = useState(null);
+    const [cossy, setCossy] = useState(null);
 
 
     function sendJoueur(cossy, team, prenom, nom, photo) {
@@ -24,17 +24,16 @@ export default function AjoutJoueur() {
 
     return (
         <div>
-            <div>cossy : </div>
+            <div style={{color: "white"}}>cossy : </div>
             <input type="text" placeholder={"cossy"} onChange={id => setCossy(id.target.value)}></input>
-            <div>prenom : </div>
+            <div style={{color: "white"}}>prenom : </div>
             <input type="text" placeholder={"prenom"} onChange={id => setPrenom(id.target.value)}></input>
-            <div>nom : </div>
+            <div style={{color: "white"}}>nom : </div>
             <input type="text" placeholder={"nom"} onChange={id => setNom(id.target.value)}></input>
-            <div> id team : </div>
+            <div style={{color: "white"}}> id team : </div>
             <input type="text" placeholder={"id team"} onChange={id => setTeam(id.target.value)}></input>
-            <div>photo : </div>
+            <div style={{color: "white"}}>photo : </div>
             <input type="text" placeholder={"photo"} onChange={id => setPhoto(id.target.value)}></input>
-
             <button onClick={() => sendJoueur(cossy, team, prenom, nom, photo)}>Submit</button>
         </div>
     )

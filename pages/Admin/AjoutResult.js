@@ -21,13 +21,13 @@ function ajoutPoint(point, cossy) {
 
 export default function AjoutResult() {
     const router = useRouter()
-    const [place, setPlace] = useState('');
-    const [deck, setDeck] = useState('');
-    const [decklist, setDecklist] = useState('');
-    const [toped, setToped] = useState(0);
-    const [youtube, setYoutube] = useState('');
-    const [cossy, setCossy] = useState('');
-    const [events, getOneEvents] = useState([]);
+    const [place, setPlace] = useState(null);
+    const [deck, setDeck] = useState(null);
+    const [decklist, setDecklist] = useState(null);
+    const [toped, setToped] = useState(null);
+    const [youtube, setYoutube] = useState(null);
+    const [cossy, setCossy] = useState(null);
+    const [events, getOneEvents] = useState(null);
 
     useEffect(() => {
         if (!router.isReady) return;
@@ -63,17 +63,17 @@ export default function AjoutResult() {
 
     return (
         <div>
-            <div>cossy : </div>
+            <div style={{color: "white"}}>cossy : </div>
             <input type="text" placeholder={"cossy"} onChange={id => setCossy(id.target.value)}></input>
-            <div>place : </div>
+            <div style={{color: "white"}}>place : </div>
             <input type="text" placeholder={"place"} onChange={id => setPlace(id.target.value)}></input>
-            <div>top : </div>
+            <div style={{color: "white"}}>top : </div>
             <input type="text" placeholder={"top"} onChange={id => setToped(id.target.value)}></input>
-            <div>deck : </div>
+            <div style={{color: "white"}}>deck : </div>
             <input type="text" placeholder={"deck"} onChange={id => setDeck(id.target.value)}></input>
-            <div>decklist : </div>
+            <div style={{color: "white"}}>decklist : </div>
             <input type="text" placeholder={"decklist"} onChange={id => setDecklist(id.target.value)}></input>
-            <div>youtube : </div>
+            <div style={{color: "white"}}>youtube : </div>
             <input type="text" placeholder={"youtube"} onChange={id => setYoutube(id.target.value)}></input>
 
             <button onClick={() => sendResultat(events.id_event, place, deck, decklist, youtube, toped, cossy)}>Submit</button>
