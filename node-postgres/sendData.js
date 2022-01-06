@@ -1,10 +1,10 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
-    user: 'ludovic',
-    host: 'localhost',
-    database: 'YugiohRank',
-    password: 'adn59bis',
-    port: 5432,
+  user: 'qcbn5449_ludovic',
+  host: 'localhost',
+  database: 'qcbn5449_test',
+  password: 'adn59bis',
+  port: 5432,
 });
 
 const sendEvent = (body) => {

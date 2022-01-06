@@ -1,11 +1,12 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: 'ludovic',
+  user: 'qcbn5449_ludovic',
   host: 'localhost',
-  database: 'YugiohRank',
+  database: 'qcbn5449_test',
   password: 'adn59bis',
   port: 5432,
 });
+
 const getOneEvent = (id) => {
   return new Promise(function (resolve, reject) {
     pool.query('SELECT * FROM public."Evenement" WHERE id_event = $1 ', [id], (error, results) => {
