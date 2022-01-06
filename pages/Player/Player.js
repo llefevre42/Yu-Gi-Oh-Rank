@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
 import CellTab from './../../components/CellTab'
+import urlSite from "./../../configServ"
+
 
 export default function Player() {
     const router = useRouter()
@@ -16,7 +18,7 @@ export default function Player() {
     }, [router.isReady])
 
     function getOnePlayer(id) {
-        fetch('http://localhost:3001/getonejoueur/' + id, {
+        fetch(urlSite + 'getonejoueur/' + id, {
         })
             .then(response => response.json())
             .then(data => {
@@ -26,7 +28,7 @@ export default function Player() {
     }
 
     function getJoueurResult(id) {
-        fetch('http://localhost:3001/getjoueurresultat/' + id, {
+        fetch(urlSite + 'getjoueurresultat/' + id, {
         })
             .then(response => response.json())
             .then(data => {

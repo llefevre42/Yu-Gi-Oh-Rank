@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
 import styles from '../../Styles/globalStyle'
 import CellTab from './../../components/CellTab'
+import urlSite from "./../../configServ"
+
 
 
 export default function AllTeam() {
@@ -13,14 +15,14 @@ export default function AllTeam() {
 
     }, []);
     function getAllTeam() {
-        fetch('http://localhost:3001/getallteam')
+        fetch(urlSite + 'getallteam')
             .then(response => response.json())
             .then(data => {
                 getAllTeams(data);
             });
     }
     function getAllPlayerInTeam() {
-        fetch('http://localhost:3001/getallplayerinteam')
+        fetch(urlSite + 'getallplayerinteam')
             .then(response => response.json())
             .then(data => {
                 getAllPlayers(data);

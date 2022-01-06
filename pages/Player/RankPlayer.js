@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
 import CellTab from './../../components/CellTab'
+import urlSite from "./../../configServ"
+
 
 
 
@@ -15,7 +17,7 @@ export default function RankPlayer() {
         getAllTeams()
     }, []);
     function getAllPlayers() {
-        fetch('http://localhost:3001/getallplayer')
+        fetch(urlSite + 'getallplayer')
             .then(response => response.json())
             .then(data => {
                 getAllPlayer(data.sort(function (a, b) {return b.point_joueur - a.point_joueur}))
@@ -23,7 +25,7 @@ export default function RankPlayer() {
     }
 
     function getAllTeams() {
-        fetch('http://localhost:3001/getallteam')
+        fetch(urlSite + 'getallteam')
             .then(response => response.json())
             .then(data => {
                 getAllTeam(data);

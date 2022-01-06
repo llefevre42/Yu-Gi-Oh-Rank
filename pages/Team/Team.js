@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
 import CellTab from './../../components/CellTab'
+import urlSite from "./../../configServ"
+
 
 export default function Team() {
     const router = useRouter()
@@ -18,7 +20,7 @@ export default function Team() {
         getAllPlayerInTeam();
     }, []);
     function getOneTeam(id) {
-        fetch('http://localhost:3001/getoneteam/' + id, {
+        fetch(urlSite + 'getoneteam/' + id, {
         })
             .then(response => response.json())
             .then(data => {
@@ -26,7 +28,7 @@ export default function Team() {
             });
     }
     function getAllPlayerTeam(id) {
-        fetch('http://localhost:3001/getallplayerteam/' + id, {
+        fetch(urlSite + 'getallplayerteam/' + id, {
         })
             .then(response => response.json())
             .then(data => {
@@ -34,14 +36,14 @@ export default function Team() {
             });
     }
     function getAllTeam() {
-        fetch('http://localhost:3001/getallteam')
+        fetch(urlSite + 'getallteam')
             .then(response => response.json())
             .then(data => {
                 getAllTeams(data);
             });
     }
     function getAllPlayerInTeam() {
-        fetch('http://localhost:3001/getallplayerinteam')
+        fetch(urlSite + 'getallplayerinteam')
             .then(response => response.json())
             .then(data => {
                 getAllPlayers(data);

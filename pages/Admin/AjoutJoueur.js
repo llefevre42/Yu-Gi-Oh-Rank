@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import urlSite from "./../../configServ"
 
 export default function AjoutJoueur() {
     const [nom, setNom] = useState(null);
@@ -9,7 +10,7 @@ export default function AjoutJoueur() {
 
 
     function sendJoueur(cossy, team, prenom, nom, photo) {
-        fetch('http://localhost:3001/sendjoueur', {
+        fetch(urlSite + 'sendjoueur', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

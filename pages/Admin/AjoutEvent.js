@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import urlSite from "./../../configServ"
 
 export default function AjoutJoueur() {
     const [nom, setNom] = useState(null);
@@ -15,7 +16,7 @@ export default function AjoutJoueur() {
     const [orga, setOrga] = useState(null);
 
     function sendEvent(nom, lieu, rating, date, nbr, text, repart, repartTop, top, orga) {
-        fetch('http://localhost:3001/sendevent', {
+        fetch(urlSite + 'sendevent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

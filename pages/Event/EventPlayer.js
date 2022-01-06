@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
+import urlSite from "./../../configServ"
+
 
 export default function EventPlayer() {
     const router = useRouter()
@@ -17,7 +19,7 @@ export default function EventPlayer() {
 
 
     function getOneEvent(id) {
-        fetch('http://localhost:3001/getoneevent/' + id, {
+        fetch(urlSite + 'getoneevent/' + id, {
         })
             .then(response => response.json())
             .then(data => {
@@ -26,7 +28,7 @@ export default function EventPlayer() {
     }
 
     function getOneJoueurResultat(event, cossy) {
-        fetch('http://localhost:3001/getonejoueurresultat/' + event + '/' + cossy, {
+        fetch(urlSite + 'getonejoueurresultat/' + event + '/' + cossy, {
         })
             .then(response => response.json())
             .then(data => {

@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
 import styles from '../../Styles/globalStyle'
 import CellTab from './../../components/CellTab'
+import urlSite from "./../../configServ"
+
 
 export default function AllPlayer() {
     const [players, getAllPlayer] = useState([]);
@@ -9,7 +11,7 @@ export default function AllPlayer() {
         getAllPlayers();
     }, []);
     function getAllPlayers() {
-        fetch('http://localhost:3001/getallplayer')
+        fetch(urlSite + 'getallplayer')
             .then(response => response.json())
             .then(data => {
                 getAllPlayer(data);

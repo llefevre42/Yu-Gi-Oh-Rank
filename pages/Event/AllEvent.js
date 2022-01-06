@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
 import styles from '../../Styles/globalStyle'
 import CellTab from './../../components/CellTab'
+import urlSite from "./../../configServ"
+
 
 export default function AllEvent() {
     const [lastEvent, getLastEvents] = useState([]);
@@ -9,7 +11,7 @@ export default function AllEvent() {
         getLastEvent();
     }, []);
     function getLastEvent() {
-        fetch('http://localhost:3001/getlastevent')
+        fetch(urlSite + 'getlastevent')
             .then(response => response.json())
             .then(data => {
                 getLastEvents(data);

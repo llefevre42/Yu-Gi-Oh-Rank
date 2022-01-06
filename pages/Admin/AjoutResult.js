@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import AlgoPoint from '../../reserveFonction/AlgoPoint'
+import urlSite from "./../../configServ"
+
 
 function ajoutPoint(point, cossy) {
-    fetch('http://localhost:3001/sendpoint', {
+    fetch(urlSite + 'sendpoint', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ point, cossy })
     })
-    fetch('http://localhost:3001/sendpointglobal', {
+    fetch(urlSite + 'sendpointglobal', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -35,7 +37,7 @@ export default function AjoutResult() {
     }, [router.isReady])
 
     function getOneEvent(id) {
-        fetch('http://localhost:3001/getoneevent/' + id, {
+        fetch(urlSite + 'getoneevent/' + id, {
         })
             .then(response => response.json())
             .then(data => {
@@ -46,7 +48,7 @@ export default function AjoutResult() {
 
     function sendResultat(event, place, deck, decklist, youtube, toped, cossy) {
         let point = AlgoPoint(events.nbr_player_event, place, toped, events.top_event )
-        fetch('http://localhost:3001/sendresult', {
+        fetch(urlSite + 'sendresult', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

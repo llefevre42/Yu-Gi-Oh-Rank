@@ -5,6 +5,8 @@ import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
 import CellTab from './../../components/CellTab'
 import AlgoPoint from '../../reserveFonction/AlgoPoint'
+import urlSite from "./../../configServ"
+
 
 export default function Events() {
     const router = useRouter()
@@ -18,7 +20,7 @@ export default function Events() {
     }, [router.isReady])
 
     function getOneEvent(id) {
-        fetch('http://localhost:3001/getoneevent/' + id, {
+        fetch(urlSite + 'getoneevent/' + id, {
         })
             .then(response => response.json())
             .then(data => {
@@ -27,7 +29,7 @@ export default function Events() {
     }
 
     function getEventResultat(id) {
-        fetch('http://localhost:3001/geteventresultat/' + id, {
+        fetch(urlSite + 'geteventresultat/' + id, {
         })
             .then(response => response.json())
             .then(data => {

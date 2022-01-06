@@ -5,6 +5,8 @@ import SliderHomePage from './../components/SliderHomePage'
 import CellTab from './../components/CellTab'
 import styles from '../Styles/globalStyle'
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import urlSite from "./../configServ"
+
 
 export default function Home() {
   const [lastEvent, getLastEvents] = useState([]);
@@ -14,14 +16,14 @@ export default function Home() {
     getNextEvent();
   }, []);
   function getLastEvent() {
-    fetch('http://localhost:3001/getlastevent')
+    fetch(urlSite + 'getlastevent')
       .then(response => response.json())
       .then(data => {
         getLastEvents(data);
       });
   }
   function getNextEvent() {
-    fetch('http://localhost:3001/getnextevent')
+    fetch(urlSite + 'getnextevent')
       .then(response => response.json())
       .then(data => {
         getNextEvents(data);
