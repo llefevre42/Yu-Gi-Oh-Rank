@@ -1,4 +1,4 @@
 
-const urlSite = "https://qcbn5449.odns.fr/"
+const urlSite = "https://yu-gi-rank.com/"
 
 export default urlSite
