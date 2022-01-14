@@ -4,7 +4,10 @@ import React, { useState, useEffect } from 'react';
 import styles from '../Styles/globalStyle'
 import Arbo from './Arbo';
 import Footer from './Footer';
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import LogoStyle from './StyledComponent/LogoStyle'
+import MenuStyle from './StyledComponent/MenuStyle'
+//import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+const isMobile = true
 
 export default function Logo(props) {
     const [visible, setVisible] = useState(false);
@@ -14,8 +17,8 @@ export default function Logo(props) {
             overflow: "hidden",
             backgroundColor: "#22171c",
             backgroundImage: "url(" + "/pattern.png" + ")",
-            width: (isMobile ? "50%" : "100%"),
-            height: (isMobile ? "50%" : "100%"),
+            width: "100%",
+            height: "100%",
             backgroundRepeat: "no-repeat",
             backgroundSize: "30%",
             backgroundPosition: "right top",
@@ -25,31 +28,16 @@ export default function Logo(props) {
                 flexDirection: "row",
             }}>
                 <div>
-                    <img src={'/menu.png'}
-                        style={{
-                            position: 'absolute',
-                            width: 50,
-                            height: 50,
-                            marginTop: 10,
-                            marginLeft: 10,
-                            ...styles.bordure_g,
-                            borderRadius: "20px"
-                        }}
+                    <MenuStyle src={'/menu.png'}
                         onClick={() => setVisible(!visible)} />
                     {visible ?
                         <Arbo></Arbo>
                         : null}
                 </div>
-                <div style={{ width: '100%', marginLeft: 20 }}>
+                <div style={{ width: '100%', marginLeft: 20 , marginRight : 20}}>
                     <Link href="/">
                         <a>
-                            <img src={'/logo.png'} 
-                            style={{ 
-                                marginLeft: "30vw", 
-                                width: (isMobile ? 120 : 240), 
-                                height: (isMobile ? 90 : 180), 
-                                marginTop: 10, 
-                                marginBottom: 20 }} />
+                            <LogoStyle src={'/logo.png'}/>
                         </a>
                     </Link>
                     {props.children}

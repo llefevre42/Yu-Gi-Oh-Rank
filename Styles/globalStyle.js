@@ -6,7 +6,7 @@ const styles = {
     },
     titre_pro:{
         fontFamily: "Phosphate",
-         color: "#27f32c"
+        color: "#27f32c"
     },
     titre_metro:{
         fontFamily: "Metropolis",
@@ -20,10 +20,7 @@ const styles = {
         alignItems: "center",
         minHeight: 50,
         overflow: 'hidden',
-
     }
-
-
 }
 
 export default styles;

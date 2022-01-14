@@ -18,7 +18,7 @@ export default function Arbo() {
   }, [emblaApi])
 
     return (
-        <div style={{ ...styles.bordure_g, borderRadius: "30px", overflow: 'hidden', marginTop: 10, marginRight: 20 }}>
+        <div style={{ ...styles.bordure_g, borderRadius: "30px", overflow: 'hidden', marginTop: 10}}>
         <div style={{ overflow: "hidden", width: "100%", }} ref={emblaRef}>
           <div style={{ display: "flex" }}>
             <img style={{

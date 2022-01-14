@@ -28,5 +28,4 @@ export default css.global`
     font-weight: normal;
     src: url("/fonts/Ariq.otf");
   }
-
 `

@@ -2,9 +2,10 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
 import SliderHomePage from './../components/SliderHomePage'
-import CellTab from './../components/CellTab'
+import CellTab from '../components/StyledComponent/CellTab'
+import TitlePro from '../components/StyledComponent/TitlePro'
+import { Container, TabMenu, TabMenuLeft } from '../components/StyledComponent/HomeTab'
 import styles from '../Styles/globalStyle'
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 import urlSite from "./../configServ"
 
 
@@ -33,16 +34,11 @@ export default function Home() {
   return (
     <div>
       <SliderHomePage />
-      <div style={{
-        display: "flex",
-        flexWrap: "wrap",
-        flexDirection: "row",
-        justifyContent: "space-around",
-      }}>
-        <div style={{ minWidth: "38vw", marginRight: "auto", marginLeft: 'auto' }}>
-          <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 20, marginBottom: 10 }}>
+      <Container>
+        <TabMenuLeft>
+          <TitlePro>
             Dernier Evenement en France :
-                 </div>
+          </TitlePro>
           <div style={{ ...styles.bordure_g, width: "100%", borderRadius: "30px" }}>
             {lastEvent.slice(0, 5).map((Event, index) => (
               <Link key={index} href={{
@@ -63,11 +59,11 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </div>
-        <div style={{ minWidth: "38vw", marginRight: "auto", marginLeft: 'auto' }}>
-          <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 20, marginBottom: 10 }}>
+        </TabMenuLeft>
+        <TabMenu>
+          <TitlePro>
             Prochain Evenement en France :
-                </div>
+            </TitlePro>
           <div style={{ ...styles.bordure_g, width: "100%", borderRadius: "30px" }}>
             {nextEvent.slice(0, 5).map((Event, index) => (
               <Link key={index} href={{
@@ -87,8 +83,8 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </div>
-      </div>
+        </TabMenu>
+      </Container>
     </div>
   );
 }
