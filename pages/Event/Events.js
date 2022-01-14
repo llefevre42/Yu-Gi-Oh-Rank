@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
-import CellTab from './../../components/CellTab'
+import CellTab from './../../components/StyledComponent/CellTab'
 import AlgoPoint from '../../reserveFonction/AlgoPoint'
 import urlSite from "./../../configServ"
 
