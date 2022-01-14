@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
 import urlSite from "./../../configServ"
-import EventPlayerStyle from "./../../Components/StyledComponent/EventPlayerStyle"
+import EventPlayerStyle from "../../components/StyledComponent/EventPlayerStyle"
 
 
 export default function EventPlayer() {

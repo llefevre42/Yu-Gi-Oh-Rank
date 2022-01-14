@@ -1,6 +1,6 @@
-import Layout from '../Components/Layout'
-import Header from '../Components/Header'
-import Footer from '../Components/Footer'
+import Layout from '../components/Layout'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 
 
