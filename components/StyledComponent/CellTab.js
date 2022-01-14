@@ -6,13 +6,13 @@ font-family: "Metropolis";
 font-weight: bold;
 color: #efefef;
 width: ${props => props.size || 100}; 
-font-size: ${props => props.head ? "21px" : "23px" }; 
+font-size: ${props => props.head ? "20px" : "23px" }; 
 text-align: center; 
 margin-top: 10px;
 margin-bottom: 10px; 
 
 @media screen and (max-width: 800px) {
-    font-size: ${props => props.head ? "14px" : "17px" }; 
+    font-size: ${props => props.head ? "11px" : "14px" }; 
     }
 `;
 

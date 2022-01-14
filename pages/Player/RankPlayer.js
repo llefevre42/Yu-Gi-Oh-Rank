@@ -4,9 +4,7 @@ import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
 import CellTab from '../../components/StyledComponent/CellTab'
 import urlSite from "./../../configServ"
-
-
-
+import TitlePro from '../../components/StyledComponent/TitlePro'
 
 export default function RankPlayer() {
     const router = useRouter()
@@ -40,9 +38,9 @@ export default function RankPlayer() {
 }
     return (
         <div>
-            <div style={{ fontSize: 40, textAlign: "center", color: "#efefef" }}>
+            <TitlePro>
                 Rank pour la saison actuel
-                    </div>
+                    </TitlePro>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
