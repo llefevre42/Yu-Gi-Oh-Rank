@@ -1,10 +1,10 @@
 
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
-import SliderHomePage from './../components/SliderHomePage'
-import CellTab from '../components/StyledComponent/CellTab'
-import TitlePro from '../components/StyledComponent/TitlePro'
-import { Container, TabMenu, TabMenuLeft } from '../components/StyledComponent/HomeTab'
+import SliderHomePage from '../Components/SliderHomePage'
+import CellTab from '../Components/StyledComponent/CellTab'
+import TitlePro from '../Components/StyledComponent/TitlePro'
+import { Container, TabMenu, TabMenuLeft } from '../Components/StyledComponent/HomeTab'
 import styles from '../Styles/globalStyle'
 import urlSite from "./../configServ"
 

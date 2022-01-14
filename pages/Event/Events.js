@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
-import CellTab from './../../components/StyledComponent/CellTab'
+import CellTab from '../../Components/StyledComponent/CellTab'
+import TitlePro from '../../Components/StyledComponent/TitlePro'
 import AlgoPoint from '../../reserveFonction/AlgoPoint'
 import urlSite from "./../../configServ"
+
 
 
 export default function Events() {
@@ -62,23 +64,23 @@ export default function Events() {
                 {
                     events.repart_event ?
                         <Link href={events.repart_event} passHref={true} >
-                                <img src={events.repart_event} style={{ width: '47%', marginTop: 10, ...styles.bordure_g }} />
+                            <img src={events.repart_event} style={{ width: '47%', marginTop: 10, ...styles.bordure_g }} />
                         </Link>
                         : null}
                 <div style={{ marginRight: 5, marginLeft: 5 }}></div>
                 {
                     events.repart_top_event ?
                         <Link href={events.repart_top_event} passHref={true}>
-                                <img src={events.repart_top_event} style={{ width: '47%', marginTop: 10, ...styles.bordure_g }} />
+                            <img src={events.repart_top_event} style={{ width: '47%', marginTop: 10, ...styles.bordure_g }} />
                         </Link>
                         : null
                 }
             </div>
             {results && events.top_event > 0 ?
                 <div>
-                    <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_pro, marginTop: 20 }}>
+                    <TitlePro>
                         Top :
-                               </div>
+                       </TitlePro>
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -130,9 +132,9 @@ export default function Events() {
                     </div>
                 </div> : null}
             {results ? <div>
-                <div style={{ fontSize: 40, textAlign: "center", color: "#efefef", ...styles.titre_pro, marginTop: 20 }}>
+                <TitlePro>
                     Round :
-                    </div>
+                    </TitlePro>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",

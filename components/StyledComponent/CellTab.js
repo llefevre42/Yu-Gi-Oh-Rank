@@ -6,7 +6,7 @@ font-family: "Metropolis";
 font-weight: bold;
 color: #efefef;
 width: ${props => props.size || 100}; 
-font-size: ${props => props.head ? "23px" : "25px" }; 
+font-size: ${props => props.head ? "21px" : "23px" }; 
 text-align: center; 
 margin-top: 10px;
 margin-bottom: 10px; 

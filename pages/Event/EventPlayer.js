@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
 import urlSite from "./../../configServ"
+import EventPlayerStyle from "./../../Components/StyledComponent/EventPlayerStyle"
 
 
 export default function EventPlayer() {
@@ -37,14 +38,10 @@ export default function EventPlayer() {
     }
 
     return (
-        <div style={{ ...styles.bordure_g, borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30, marginBottom: 10 }}>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-around", marginBottom: 10
-            }}>
+        <EventPlayerStyle>
+            <div className="Container">
                 <div>
-                    <div style={{ display: "flex", flexDirection: "row", margin: 10 }}>
+                    <div className="ContainerHead">
                         <Link href={{
                             pathname: "/Player/Player",
                             query: { id_cossy: results.id_cossy },
@@ -120,13 +117,13 @@ export default function EventPlayer() {
                 </div>
                 {results.img_decklist && results.img_decklist != '' && results.img_decklist != 'undefined' ?
                     <Link href={results.img_decklist} passHref={true} >
-                        <img style={{ width: "45%", border: "2px solid", borderColor: '#0d8d40', margin: 10}}
+                        <img  className="DeckList"
                             src={results.img_decklist}
                             alt="new"
                         />
                     </Link>
                     : null}
             </div>
-        </div>
+        </EventPlayerStyle>
     )
 }

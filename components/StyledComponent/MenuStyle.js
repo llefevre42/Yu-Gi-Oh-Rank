@@ -15,6 +15,8 @@ const MenuStyle = styled.img`
         width: 25px;
         height: 25px;
         border-radius: 10px;
+        border: 2px solid; 
+        border-color: #0d8d40;
     }
 `;
 
