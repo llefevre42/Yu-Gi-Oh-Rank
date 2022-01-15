@@ -42,45 +42,39 @@ export default function EventPlayer() {
             <div className="Container">
                 <div>
                     <div className="ContainerHead">
-                        <Link href={{
-                            pathname: "/Player/Player",
-                            query: { id_cossy: results.id_cossy },
-                        }}>
-                            {results.photo_joueur != null && results.photo_joueur != '' && results.photo_joueur != 'undefined' ? <img src={results.photo_joueur}
-                                style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />
-                                : <img src={"./../Vagabond.jpeg"}
-                                    style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />}
-                        </Link>
-                        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around", margin: 10}}>
-                            <div>
-                                <div style={{ ...styles.titre_metro, fontSize: 23, textAlign: "left"}}>
-                                    <Link href={{
-                                        pathname: "/Player/Player",
-                                        query: { id_cossy: results.id_cossy },
-                                    }}>
-                                        <a>
-                                            {results.prenom_joueur} {results.nom_joueur}
-                                        </a>
-                                    </Link>
+                        <div  style={{ display: "flex", flexDirection: "row", marginBottom: 10}}>
+                            <Link href={{
+                                pathname: "/Player/Player",
+                                query: { id_cossy: results.id_cossy },
+                            }}>
+                                {results.photo_joueur != null && results.photo_joueur != '' && results.photo_joueur != 'undefined' ? <img src={results.photo_joueur}
+                                    style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />
+                                    : <img src={"./../Vagabond.jpeg"}
+                                        style={{ width: 150, height: 200, marginTop: 10, ...styles.bordure_g }} />}
+                            </Link>
+                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around", margin: 10 }}>
+                                <div>
+                                    <div className="Text" style={{ fontSize: 23 }}>
+                                        <Link href={{
+                                            pathname: "/Player/Player",
+                                            query: { id_cossy: results.id_cossy },
+                                        }}>
+                                            <a>
+                                                {results.prenom_joueur} {results.nom_joueur}
+                                            </a>
+                                        </Link>
+                                    </div>
+                                    <div className="Text">
+                                        {results.id_cossy}
+                                    </div>
+                                    <div className="Text">
+                                        Deck : {results.deck_joueur != '' && results.deck_joueur != 'undefined' ? results.deck_joueur : "inconnu"}
+                                    </div>
                                 </div>
-                                <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "left" }}>
-                                    {results.id_cossy}
-                                </div>
-                                <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "left" }}>
-                                    Deck : {results.deck_joueur != '' && results.deck_joueur != 'undefined' ? results.deck_joueur : "inconnu"}
+                                <div className="Text" style={{ fontSize: 40, textAlign: "center" }}>
+                                    {results.toped > 0 ? (results.toped == 1 ? results.toped + 'er' : results.toped + 'eme') : (results.place == 1 ? results.place + 'er' : results.place + 'eme')}
                                 </div>
                             </div>
-                            {results.toped > 0 ?
-
-                                <div style={{ ...styles.titre_metro, fontSize: 40, textAlign: "left",  textAlign: "center" }}>
-                                    {results.toped == 1 ? results.toped + 'er' : results.toped + 'eme'}
-                                </div>
-                                :
-                                <div style={{ ...styles.titre_metro, fontSize: 40, textAlign: "left", textAlign: "center" }}>
-                                    {results.place == 1 ? results.place + 'er' : results.place + 'eme'}
-                                </div>
-                            }
-
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", }}>
                             <div style={{ ...styles.bordure_g, borderRadius: "30px", marginTop: "auto", marginBottom: "auto", padding: 20 }}>
@@ -89,15 +83,15 @@ export default function EventPlayer() {
                                     query: { event_id: results.id_event },
                                 }}>
                                     <a>
-                                        <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "center" }}>
+                                        <div className="Text" style={{ textAlign: "center" }}>
                                             <div>
                                                 {events.nom_event}
                                             </div>
                                         </div>
-                                        <div style={{ ...styles.titre_metro, fontSize: 20, textAlign: "center" }}>
+                                        <div className="Text" style={{ textAlign: "center" }}>
                                             {(new Date(events.date_event)).getDate()} /  {(new Date(events.date_event)).getMonth() + 1}
                                         </div>
-                                        <div style={{ ...styles.titre_metro, fontSize: 20,textAlign: "center" }}>
+                                        <div className="Text" style={{ textAlign: "center" }}>
                                             {events.lieu_event}
                                         </div>
                                     </a>
@@ -106,7 +100,7 @@ export default function EventPlayer() {
                         </div>
                     </div>
                     {results.youtube_link && results.youtube_link != '' && results.youtube_link != 'undefined' ?
-                        <iframe style={{ width: "100%", height: "60%", border: "2px solid", borderColor: '#0d8d40', marginTop :10, marginLeft: 10, minHeight: 400 }}
+                        <iframe style={{ width: "100%", height: "60%", border: "2px solid", borderColor: '#0d8d40', marginTop: 10, marginLeft: 10, minHeight: 400 }}
                             id="player"
                             src={results.youtube_link}
                             frameBorder='0'
@@ -117,7 +111,7 @@ export default function EventPlayer() {
                 </div>
                 {results.img_decklist && results.img_decklist != '' && results.img_decklist != 'undefined' ?
                     <Link href={results.img_decklist} passHref={true} >
-                        <img  className="DeckList"
+                        <img className="DeckList"
                             src={results.img_decklist}
                             alt="new"
                         />

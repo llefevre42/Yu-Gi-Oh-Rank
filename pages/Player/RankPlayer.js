@@ -67,7 +67,10 @@ export default function RankPlayer() {
                 overflow: 'hidden',
             }}>
                 {players.map((player, index) => (
-                    <Link key={index} href="/Event/EventPlayer">
+                    <Link key={index}  href={{
+                        pathname: "/Player/Player",
+                        query: { id_cossy: player.id_cossy },
+                    }}>
                         <div style={{ ...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null) }}>
                             <CellTab size={"15%"}>{index + 1} </CellTab>
                             <CellTab size={"30%"}>{player.nom_joueur + ' ' + player.prenom_joueur}</CellTab>

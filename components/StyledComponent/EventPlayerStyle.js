@@ -24,6 +24,13 @@ margin-bottom: 10px;
     flex-direction: row; 
     margin: 10px
 }
+.Text{
+    font-size: 20px;
+    text-align: left;
+    font-family: "Metropolis";
+    font-weight: bold;
+    color: #eaeaea;
+}
 
 .DeckList{
     width: 45%; 
@@ -36,6 +43,9 @@ margin-bottom: 10px;
     .Container{
         flex-direction: column;
     }
+    .ContainerHead{
+        flex-direction: column;
+}
     .DeckList{
         width: 90%;
         margin : auto;
