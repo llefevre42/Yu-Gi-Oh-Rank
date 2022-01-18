@@ -16,7 +16,7 @@ export default function Player() {
         if (!router.isReady) return;
         getOnePlayer(router.query.id_cossy)
         getJoueurResult(router.query.id_cossy)
-    }, [router.isReady])
+    }, [router.isReady]);
 
     function getOnePlayer(id) {
         fetch(urlSite + 'getonejoueur/' + id, {

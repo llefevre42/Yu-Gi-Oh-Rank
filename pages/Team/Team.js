@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
 import CellTab from '../../components/StyledComponent/CellTab'
 import urlSite from "./../../configServ"
+import returnDate from "./../../reserveFonction/returnDate"
 
 
 export default function Team() {
@@ -12,18 +13,21 @@ export default function Team() {
     const [players, getAllPlayerTeams] = useState([]);
     const [teams, getAllTeams] = useState([]);
     const [playersInTeam, getAllPlayers] = useState([]);
+    
     useEffect(() => {
         if (!router.isReady) return;
-        getOneTeam(router.query.id_team);
         getAllPlayerTeam(router.query.id_team);
+        getOneTeam(router.query.id_team);
         getAllTeam();
         getAllPlayerInTeam();
-    }, []);
+    }, [router.isReady]);
+
     function getOneTeam(id) {
         fetch(urlSite + 'getoneteam/' + id, {
         })
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 getOneTeams(data);
             });
     }
@@ -39,7 +43,8 @@ export default function Team() {
         fetch(urlSite + 'getallteam')
             .then(response => response.json())
             .then(data => {
-                getAllTeams(data);
+                console.log(data)
+                getAllTeams({data});
             });
     }
     function getAllPlayerInTeam() {
@@ -49,18 +54,16 @@ export default function Team() {
                 getAllPlayers(data);
             });
     }
-    console.log(teams)
-    teams.map((team, index) => {
+    teams.map((team2, index) => {
         playersInTeam.map((player, index2) => {
-            console.log(team.nom_team, player.prenom_joueur,)
-            if (player.id_team == team.id_team) {
+            if (player.id_team == team2.id_team) {
                 teams[index].total_point_team += player.point_joueur
             }
         })
     })
  let point = teams.find(element => element.id_team == team.id_team)
  let rank = 0
-
+console.log(teams)
     return (
         <div style={{ ...styles.bordure_g, borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30, marginBottom: 20 }}>
             <div style={{ display: "flex", flexDirection: "row", marginRight: 30, marginLeft: 30, marginTop: 30 }}>
@@ -73,22 +76,22 @@ export default function Team() {
                     <div style={{ display: "flex", flexDirection: "column", justifyContent: 'space-around' }}>
                         <div>
 
-                            <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
-                                Date de création : {team.crea_team}
+                            <div style={{ fontSize: 23, textAlign: "left", color: "#efefef" }}>
+                                Date de création : {returnDate(team.crea_team)}
                             </div>
-                            <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                            <div style={{ fontSize: 23, textAlign: "left", color: "#efefef" }}>
                                 Rank global : {rank}
                             </div>
                         </div>
                         <div>
-                            <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                            <div style={{ fontSize: 23, textAlign: "left", color: "#efefef" }}>
                                 Score total : {point}
                             </div>
-                            <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
+                            <div style={{ fontSize: 23, textAlign: "left", color: "#efefef" }}>
                                 Nombre de membre : {players.length}
                             </div>
-                            <div style={{ fontSize: 23, textAlign: "left", marginTop: 0, color: "#efefef" }}>
-                                derniere mise a jour des information : {team.crea_team}
+                            <div style={{ fontSize: 23, textAlign: "left", color: "#efefef" }}>
+                                derniere mise a jour des information : {returnDate(team.last_update_team)}
                             </div>
                         </div>
                     </div>

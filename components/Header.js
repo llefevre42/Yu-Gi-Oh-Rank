@@ -12,7 +12,8 @@ const isMobile = true
 export default function Logo(props) {
     const [visible, setVisible] = useState(false);
     return (
-        <div style={{
+        <div  onClick={() => { visible == true ? setVisible(false) : null}}
+         style={{
             minHeight: "100vh",
             overflow: "hidden",
             backgroundColor: "#22171c",
@@ -37,7 +38,7 @@ export default function Logo(props) {
                 <div style={{ width: '100%', marginLeft: 20 , marginRight : 20}}>
                     <Link href="/">
                         <a>
-                            <LogoStyle src={'/logo.png'}/>
+                            <LogoStyle src={'/Yu-gi-rank-logo.png'}/>
                         </a>
                     </Link>
                     {props.children}

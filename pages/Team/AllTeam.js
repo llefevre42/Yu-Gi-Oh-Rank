@@ -28,10 +28,8 @@ export default function AllTeam() {
                 getAllPlayers(data);
             });
     }
-    console.log(teams)
     teams.map((team, index) => {
         players.map((player, index2) => {
-            console.log(team.nom_team, player.prenom_joueur,)
             if (player.id_team == team.id_team) {
                 teams[index].total_point_team += player.point_joueur
             }
