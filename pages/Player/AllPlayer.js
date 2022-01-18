@@ -4,7 +4,6 @@ import styles from '../../Styles/globalStyle'
 import CellTab from '../../components/StyledComponent/CellTab'
 import urlSite from "./../../configServ"
 
-
 export default function AllPlayer() {
     const [players, getAllPlayer] = useState([]);
     useEffect(() => {

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import styles from '../../Styles/globalStyle'
 import urlSite from "./../../configServ"
 import EventPlayerStyle from "../../components/StyledComponent/EventPlayerStyle"
+import ReturnDate from "./../../reserveFonction/returnDate"
 
 
 export default function EventPlayer() {
@@ -89,7 +90,7 @@ export default function EventPlayer() {
                                             </div>
                                         </div>
                                         <div className="Text" style={{ textAlign: "center" }}>
-                                            {(new Date(events.date_event)).getDate()} /  {(new Date(events.date_event)).getMonth() + 1}
+                                            {ReturnDate(events.date_event, 1)}
                                         </div>
                                         <div className="Text" style={{ textAlign: "center" }}>
                                             {events.lieu_event}

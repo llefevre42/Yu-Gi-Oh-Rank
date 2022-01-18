@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../Styles/globalStyle'
 import CellTab from '../../components/StyledComponent/CellTab'
 import urlSite from "./../../configServ"
-
+import ReturnDate from "./../../reserveFonction/returnDate"
 
 export default function AllEvent() {
     const [lastEvent, getLastEvents] = useState([]);
@@ -17,10 +17,6 @@ export default function AllEvent() {
                 getLastEvents(data);
             });
     }
-    lastEvent.map((Events, index) => {
-        const date = new Date(Events.date_event)
-        lastEvent[index].date_event = (date.getDate() + ' / ' + (date.getMonth() + 1) + ' / ' + date.getFullYear())
-    })
     return (
         <div style={{}}>
             <div style={{ fontSize: 30, textAlign: "center", ...styles.titre_pro, marginTop: 30, marginBottom: 30, }}>
@@ -40,7 +36,7 @@ export default function AllEvent() {
                     }} >
                         <a>
                             <div style={{ ...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null) }}>
-                                <CellTab size={"15%"}>{Event.date_event}</CellTab>
+                                <CellTab size={"15%"}>{ReturnDate(Event.date_event)}</CellTab>
                                 <CellTab size={"25%"}>{Event.lieu_event}</CellTab>
                                 <CellTab size={"25%"}>{Event.nom_event}</CellTab>
                                 <CellTab size={"5%"}>{Event.rating_event}</CellTab>

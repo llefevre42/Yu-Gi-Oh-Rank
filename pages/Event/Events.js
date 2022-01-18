@@ -8,8 +8,7 @@ import TitlePro from '../../components/StyledComponent/TitlePro'
 import AlgoPoint from '../../reserveFonction/AlgoPoint'
 import urlSite from "./../../configServ"
 import EventStyle from '../../components/StyledComponent/EventStyle';
-
-
+import ReturnDate from "./../../reserveFonction/returnDate"
 
 export default function Events() {
     const router = useRouter()
@@ -40,17 +39,13 @@ export default function Events() {
             });
     }
 
-
-    const date = new Date(events.date_event)
-    const jour = date.getDate()
-    const mois = (date.getMonth() + 1)
     return (
         <EventStyle>
             <div className="Text" style={{ fontSize: 40,  }}>
                 {events.nom_event} -  {events.rating_event}
             </div>
             <div  className="Text" style={{ fontSize: 25, marginTop: 10}}>
-                {jour}/{mois} - {events.nbr_player_event} Joueurs
+                {ReturnDate(events.date_event)} - {events.nbr_player_event} Joueurs
                     </div>
             {events.top_event > 0 ? <div  className="Text" style={{ fontSize: 25}}>
                 Top Cut : {events.top_event}

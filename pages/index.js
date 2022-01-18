@@ -7,6 +7,8 @@ import TitlePro from '../components/StyledComponent/TitlePro'
 import { Container, TabMenu, TabMenuLeft } from '../components/StyledComponent/HomeTab'
 import styles from '../Styles/globalStyle'
 import urlSite from "./../configServ"
+import ReturnDate from "./../reserveFonction/returnDate"
+import Events from './Event/Events';
 
 
 export default function Home() {
@@ -50,7 +52,7 @@ export default function Home() {
                     ...styles.tab_medium_element,
                     backgroundColor: (index % 2 ? "black" : null),
                   }}>
-                    <CellTab size={"20%"}>{(new Date(Event.date_event)).getDate()} /  {(new Date(Event.date_event)).getMonth() + 1}</CellTab>
+                    <CellTab size={"20%"}>{ReturnDate(Event.date_event, false)}</CellTab>
                     <CellTab size={"35%"}>{Event.lieu_event.substr(0, 15)}</CellTab>
                     <CellTab size={"35%"}>{Event.nom_event.substr(0, 15)}</CellTab>
                     <CellTab size={"5%"}>{Event.rating_event}</CellTab>
@@ -75,7 +77,7 @@ export default function Home() {
                     ...styles.tab_medium_element,
                     backgroundColor: (index % 2 ? "black" : null),
                   }}>
-                    <CellTab size={"20%"}>{(new Date(Event.date_event)).getDate()} /  {(new Date(Event.date_event)).getMonth() + 1}</CellTab>
+                    <CellTab size={"20%"}>{ReturnDate(Event.date_event, false)}</CellTab>
                     <CellTab size={"40%"}>{Event.lieu_event}</CellTab>
                     <CellTab size={"40%"}>{Event.nom_event}</CellTab>
                   </div>
