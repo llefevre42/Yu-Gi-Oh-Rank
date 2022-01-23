@@ -5,21 +5,19 @@ import styles from '../../Styles/globalStyle'
 import CellTab from '../../components/StyledComponent/CellTab'
 import urlSite from "./../../configServ"
 import returnDate from "./../../reserveFonction/returnDate"
+import PointTeam from '../../reserveFonction/PointTeam';
+import RankTeam from '../../reserveFonction/RankTeam';
 
 
 export default function Team() {
     const router = useRouter()
-    const [team, getOneTeams] = useState([]);
     const [players, getAllPlayerTeams] = useState([]);
-    const [teams, getAllTeams] = useState([]);
-    const [playersInTeam, getAllPlayers] = useState([]);
-    
+    const [team, getOneTeams] = useState([]);
+
     useEffect(() => {
         if (!router.isReady) return;
         getAllPlayerTeam(router.query.id_team);
         getOneTeam(router.query.id_team);
-        getAllTeam();
-        getAllPlayerInTeam();
     }, [router.isReady]);
 
     function getOneTeam(id) {
@@ -27,7 +25,6 @@ export default function Team() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 getOneTeams(data);
             });
     }
@@ -39,31 +36,7 @@ export default function Team() {
                 getAllPlayerTeams(data);
             });
     }
-    function getAllTeam() {
-        fetch(urlSite + 'getallteam')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                getAllTeams({data});
-            });
-    }
-    function getAllPlayerInTeam() {
-        fetch(urlSite + 'getallplayerinteam')
-            .then(response => response.json())
-            .then(data => {
-                getAllPlayers(data);
-            });
-    }
-    teams.map((team2, index) => {
-        playersInTeam.map((player, index2) => {
-            if (player.id_team == team2.id_team) {
-                teams[index].total_point_team += player.point_joueur
-            }
-        })
-    })
- let point = teams.find(element => element.id_team == team.id_team)
- let rank = 0
-console.log(teams)
+
     return (
         <div style={{ ...styles.bordure_g, borderRadius: "30px", display: "flex", flexDirection: "column", marginTop: 10, marginLeft: 10, marginRight: 30, marginBottom: 20 }}>
             <div style={{ display: "flex", flexDirection: "row", marginRight: 30, marginLeft: 30, marginTop: 30 }}>
@@ -80,12 +53,12 @@ console.log(teams)
                                 Date de création : {returnDate(team.crea_team)}
                             </div>
                             <div style={{ fontSize: 23, textAlign: "left", color: "#efefef" }}>
-                                Rank global : {rank}
+                                Rank global : {RankTeam(router.query.id_team)}
                             </div>
                         </div>
                         <div>
                             <div style={{ fontSize: 23, textAlign: "left", color: "#efefef" }}>
-                                Score total : {point}
+                                Score total : {PointTeam(router.query.id_team)}
                             </div>
                             <div style={{ fontSize: 23, textAlign: "left", color: "#efefef" }}>
                                 Nombre de membre : {players.length}
@@ -98,7 +71,7 @@ console.log(teams)
                 </div>
             </div>
             <div style={{
-              ...styles.tab_medium_element,
+                ...styles.tab_medium_element,
                 marginTop: 20,
                 marginRight: 20,
             }}>
