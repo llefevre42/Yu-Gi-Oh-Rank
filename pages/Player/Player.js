@@ -5,6 +5,7 @@ import styles from '../../Styles/globalStyle'
 import CellTab from '../../components/StyledComponent/CellTab'
 import PlayerStyle from '../../components/StyledComponent/PlayerStyle'
 import urlSite from "./../../configServ"
+import RankJoueur from '../../reserveFonction/RankJoueur';
 
 
 export default function Player() {
@@ -23,7 +24,6 @@ export default function Player() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 getOneJoueurs(data);
             });
     }
@@ -63,8 +63,14 @@ export default function Player() {
                     <div style={{ ...styles.titre_metro, fontSize: 23,textAlign: "center" }}>
                         Point saison : {joueur.point_joueur}
                     </div>
+                    <div style={{ ...styles.titre_metro, fontSize: 23,textAlign: "center" }}>
+                        Rank saison : {RankJoueur(router.query.id_cossy)}
+                    </div>
                     <div style={{ ...styles.titre_metro, fontSize: 23, textAlign: "center" }}>
                         Point global : {joueur.point_joueur}
+                    </div>
+                    <div style={{ ...styles.titre_metro, fontSize: 23,textAlign: "center" }}>
+                        Rank global : {RankJoueur(router.query.id_cossy)}
                     </div>
                     <div>
 
@@ -105,12 +111,12 @@ export default function Player() {
                 overflow: 'hidden'
             }}>
                 {results.map((result, index) => (
-                    <Link href={{
+                    <Link key={index} href={{
                         pathname: "/Event/Events",
                         query: { event_id: result.id_event },
                     }}>
                         <a>
-                            <div key={index} style={{
+                            <div style={{
                                 ...styles.tab_medium_element,
                                 backgroundColor: (index % 2 ? "black" : null)
                             }}>

@@ -29,7 +29,7 @@ export default function Logo(props) {
                 flexDirection: "row",
             }}>
                 <div>
-                    <MenuStyle src={'/menu.png'}
+                    <MenuStyle src={'/menu-white.png'}
                         onClick={() => setVisible(!visible)} />
                     {visible ?
                         <Arbo></Arbo>
