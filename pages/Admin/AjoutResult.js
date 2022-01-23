@@ -47,7 +47,7 @@ export default function AjoutResult() {
 
 
     function sendResultat(event, place, deck, decklist, youtube, toped, cossy) {
-        let point = AlgoPoint(events.nbr_player_event, place, toped, events.top_event )
+        let point = AlgoPoint(events.nbr_player_event, parseInt(place), parseInt(toped), events.top_event )
         fetch(urlSite + 'sendresult', {
             method: 'POST',
             headers: {
