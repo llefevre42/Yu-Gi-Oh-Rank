@@ -141,8 +141,8 @@ export default function Events() {
                     alignItems: "center",
                 }}>
                     <CellTab head size={"10%"}>Place :</CellTab>
-                    <CellTab head size={"30%"}>Joueur :</CellTab>
-                    <CellTab head size={"30%"}>Deck :</CellTab>
+                    <CellTab head size={"35%"}>Joueur :</CellTab>
+                    <CellTab head size={"35%"}>Deck :</CellTab>
                     <CellTab head size={"15%"}>Point :</CellTab>
                 </div>
                 <div style={{
@@ -166,8 +166,8 @@ export default function Events() {
                             <a style={{ color: "inherit", textDecoration: "inherit" }}>
                                 <div style={{ ...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null) }}>
                                     <CellTab size={"10%"}>{result.place}</CellTab>
-                                    <CellTab size={"30%"}>{result.nom_joueur + ' ' + result.prenom_joueur} </CellTab>
-                                    <CellTab size={"30%"}>{result.deck_joueur}</CellTab>
+                                    <CellTab size={"35%"}>{result.nom_joueur + ' ' + result.prenom_joueur} </CellTab>
+                                    <CellTab size={"35%"}>{result.deck_joueur}</CellTab>
                                     <div style={{ fontSize: 23, textAlign: "center", color: "#efefef", fontSize: 25, width: "15%", marginTop: 10, marginBottom: 10, ...styles.titre_metro, color: (AlgoPoint(events.nbr_player_event, result.place, result.toped, events.top_event) * 1 > 0 ? 'green' : 'white') }}>
                                         {AlgoPoint(events.nbr_player_event, result.place, result.toped, events.top_event) * 1 > 0 ? '+' : null}{AlgoPoint(events.nbr_player_event, result.place, result.toped, events.top_event)}
                                     </div>
