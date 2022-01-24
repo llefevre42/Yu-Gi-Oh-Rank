@@ -24,9 +24,9 @@ export default function AllEvent() {
                 </div>
             <div style={{ ...styles.tab_medium_element, marginRight: 20}}>
                 <CellTab head size={"15%"}>Date :</CellTab>
-                <CellTab head size={"25%"}>Lieu :</CellTab>
-                <CellTab head size={"25%"}>Event :</CellTab>
-                <CellTab head size={"5%"}>Rank :</CellTab>
+                <CellTab head size={"35%"}>Lieu :</CellTab>
+                <CellTab head size={"35%"}>Event :</CellTab>
+                <CellTab head size={"15%"}>Rank :</CellTab>
             </div>
             <div style={{ ...styles.bordure_g, borderRadius: "30px", marginRight: 20 }}>
                 {lastEvent.map((Event, index) => (
@@ -37,9 +37,9 @@ export default function AllEvent() {
                         <a>
                             <div style={{ ...styles.tab_medium_element, backgroundColor: (index % 2 ? "black" : null) }}>
                                 <CellTab size={"15%"}>{ReturnDate(Event.date_event)}</CellTab>
-                                <CellTab size={"25%"}>{Event.lieu_event}</CellTab>
-                                <CellTab size={"25%"}>{Event.nom_event}</CellTab>
-                                <CellTab size={"5%"}>{Event.rating_event}</CellTab>
+                                <CellTab size={"35%"}>{Event.lieu_event}</CellTab>
+                                <CellTab size={"35%"}>{Event.nom_event}</CellTab>
+                                <CellTab size={"15%"}>{Event.rating_event}</CellTab>
                             </div>
                         </a>
                     </Link>

@@ -64,6 +64,7 @@ export default function RankPlayer() {
                 marginTop: 10,
                 marginLeft: 10,
                 marginRight: 30,
+                marginBottom: 20,
                 overflow: 'hidden',
             }}>
                 {players.map((player, index) => (
